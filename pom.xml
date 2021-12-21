@@ -23,6 +23,13 @@
         <!-- <module>distribution</module> -->
     </modules>
     <build>
+    <!-- <extensions>
+          <extension>
+              <groupId>fr.brouillard.oss</groupId>
+              <artifactId>jgitver-maven-plugin</artifactId>
+              <version>1.8.0</version>
+          </extension>
+      </extensions> -->
         <pluginManagement>
             <plugins>
                 <plugin>

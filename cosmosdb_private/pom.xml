@@ -12,6 +12,7 @@
     <packaging>pom</packaging>
     <name>Packaging :: Module cosmosdb_private</name>
     <build>
+    
         <!-- <finalName>${project.artifactId}-${project.version}</finalName> -->
         <plugins>
             <plugin>
@@ -33,6 +34,14 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-scm-plugin</artifactId>
+        <version>1.12.0</version>
+        <configuration>
+          <tag>mytag</tag>
+        </configuration>
+      </plugin>
         </plugins>
     </build>
 </project>
