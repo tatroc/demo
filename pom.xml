@@ -3,7 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.test</groupId>
+    <groupId>org.kna</groupId>
     <artifactId>parent</artifactId>
     <version>0.1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
@@ -12,12 +12,13 @@
         <repository>
             <id>github</id>
             <name>GitHub OWNER Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/tatroc/REPOSITORY</url>
+            <url>https://maven.pkg.github.com/tatroc/demo</url>
         </repository>
     </distributionManagement>
     <modules>
-        <module>child1</module>
-        <module>child2</module>
+        <module>cosmosdb_private</module>
+        <!-- <module>child2</module> -->
+        <!-- <module>cosmosdb_private</module> -->
         <!-- <module>child3</module> -->
         <!-- <module>distribution</module> -->
     </modules>
