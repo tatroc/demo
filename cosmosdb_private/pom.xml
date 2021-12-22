@@ -4,7 +4,7 @@
         <groupId>org.kna</groupId>
         <artifactId>cosmosdb_private</artifactId>
         <version>0.1.79</version>
-        <!-- <relativePath>../pom.xml</relativePath> -->
+
 
         <scm>
             <connection>scm:git:ssh://git@github.com/tatroc/demo.git</connection>
