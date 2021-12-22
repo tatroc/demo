@@ -62,7 +62,7 @@
                     </goals>
                     <configuration>
                       <files>
-                        <file>..../prop.properties</file>
+                        <file>...../prop.properties</file>
                       </files>
                     </configuration>
                   </execution>
