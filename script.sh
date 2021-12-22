@@ -3,6 +3,17 @@
 DIR=$(git diff HEAD~1 --name-only | grep '/' | awk -F '/' '{ print $1 }' | head -n 1)
 echo "Working on directory $DIR"
 
+
+TREE_CLEAN=$(git ls-files --deleted --modified --others --exclude-standard | wc -l)
+if [  $TREE_CLEAN -eq 0 ]; then
+   echo "Working tree clean"
+else
+   echo "Working tree is not clean, please commit changes. Exiting..."
+   exit 1
+fi
+
+
+
 if [ -z "$DIR" ]
 then
       echo "var \$DIR is empty, exiting..."
