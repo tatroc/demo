@@ -7,7 +7,7 @@
         <!-- <relativePath>../pom.xml</relativePath> -->
 
         <scm>
-            <connection>scm:git:ssh://git@github.com/tatroc/demo.git</connection>
+            <connection>${foo}</connection>
             <developerConnection>scm:git:ssh://git@github.com/tatroc/demo.git</developerConnection>
           <!-- <tag>v0.1.0</tag>-->
         <!--<tag>test-parent-0.1.13</tag> -->
@@ -49,7 +49,7 @@
                     </execution>
                 </executions>
             </plugin> -->
-            <plugin>
+         <!--   <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
                 <version>3.0.0</version>
@@ -58,8 +58,7 @@
                     <phase>initialize</phase>
                     <configuration>
                       <target>
-                      <!--  <property name="propPath" value="${project.artifactId}/prop.properties"/> -->
-                      <!--   <copy file="../prop.properties" tofile="/tmp/prop.properties" /> -->
+
                         <copy file="../prop.properties" tofile="./prop.properties" />
                       </target>
                     </configuration>
@@ -68,9 +67,9 @@
                     </goals>
                   </execution>
                 </executions>
-              </plugin>
+              </plugin> -->
 
-        <!--    <plugin>
+              <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>properties-maven-plugin</artifactId>
                 <version>1.0-alpha-2</version>
@@ -88,7 +87,7 @@
                     </configuration>
                   </execution>
                 </executions>
-              </plugin> -->
+              </plugin> 
 
 
             <plugin>
