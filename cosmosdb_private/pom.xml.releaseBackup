@@ -3,7 +3,7 @@
    
         <groupId>org.kna</groupId>
         <artifactId>cosmosdb_private</artifactId>
-        <version>0.1.34-SNAPSHOT</version>
+        <version>0.1.33-SNAPSHOT</version>
         <!-- <relativePath>../pom.xml</relativePath> -->
 
         <scm>
@@ -30,26 +30,6 @@
         <!-- <finalName>${project.artifactId}-${project.version}</finalName> -->
         <plugins>
             <plugin>
-                <groupId>com.coderplus.maven.plugins</groupId>
-                <artifactId>copy-rename-maven-plugin</artifactId>
-                <version>1.0</version>
-                <executions>
-                    <execution>
-                        <id>copy-file</id>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>copy</goal>
-                        </goals>
-                        <configuration>
-                            <configuration>
-                                <sourceFile>../prop.properties</sourceFile>
-                                <destinationFile>${project.artifactId}/prop.properties</destinationFile>
-                            </configuration>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>properties-maven-plugin</artifactId>
                 <version>1.0-alpha-2</version>
@@ -62,7 +42,7 @@
                     </goals>
                     <configuration>
                       <files>
-                        <file>prop.properties</file>
+                        <file>../prop.properties</file>
                       </files>
                     </configuration>
                   </execution>
