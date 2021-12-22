@@ -1,6 +1,6 @@
 # tssdevops.azure.keyvault
 Terraform 12 module which creates an Azure Key Vault
-
+version
 These types of resources are supported:
 * [Resource Group](https://www.terraform.io/docs/providers/azurerm/d/resource_group.html)
 * [Azure Key Vault](https://www.terraform.io/docs/providers/azurerm/r/key_vault.html)
