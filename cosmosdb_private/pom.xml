@@ -30,6 +30,33 @@
     
         <!-- <finalName>${project.artifactId}-${project.version}</finalName> -->
         <plugins>
+            <plugin>
+                <groupId>com.ragedunicorn.tools.maven</groupId>
+                <artifactId>github-release-maven-plugin</artifactId>
+                <version>v1.0.3</version>
+                <executions>
+                  <execution>
+                    <id>default-cli</id>
+                    <configuration>
+                      <owner>tatroc</owner>
+                      <repository>demo</repository>
+                      <server>github</server>
+                      <tagName>${project.artifactId}-${project.version}</tagName>
+                      <name>${project.artifactId}-${project.version}-release</name>
+                    <!--  <targetCommitish>master</targetCommitish> -->
+                      <body>release description overwritten by release notes</body>
+                      <releaseNotes>README.md</releaseNotes>
+                     <!-- <assets>
+                        <asset>src/main/resources/asset-plain-text-example.txt</asset>
+                        <asset>src/main/resources/asset-zip-example.zip</asset>
+                      </assets> -->
+                    </configuration>
+                  </execution>
+                </executions>
+              </plugin>
+
+
+
           <!-- <plugin>
                 <groupId>com.coderplus.maven.plugins</groupId>
                 <artifactId>copy-rename-maven-plugin</artifactId>
