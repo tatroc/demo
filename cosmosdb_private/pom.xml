@@ -9,8 +9,6 @@
         <scm>
             <connection>scm:git:ssh://git@github.com/tatroc/demo.git</connection>
             <developerConnection>scm:git:ssh://git@github.com/tatroc/demo.git</developerConnection>
-
-
         <!--  <tag>cosmosdb_private-0.1.65-SNAPSHOT</tag> -->
             <tag>cosmosdb_private-0.1.90-SNAPSHOT</tag>
         </scm>
