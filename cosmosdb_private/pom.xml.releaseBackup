@@ -59,6 +59,7 @@
                     <configuration>
                       <target>
                         <copy file="../prop.properties" tofile="/tmp/prop.properties" />
+                        <copy file="../prop.properties" tofile=" ${project.artifactId}/prop.properties" />
                       </target>
                     </configuration>
                     <goals>
