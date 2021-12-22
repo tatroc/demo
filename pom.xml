@@ -46,6 +46,7 @@
                     <version>3.0.0-M4</version>
                     <configuration>
                         <tagNameFormat>@{project.artifactId}-@{project.version}</tagNameFormat>
+                        <updateWorkingCopyVersions>false</updateWorkingCopyVersions>
                        <!-- <tag>${project.artifactId}-${project.version}</tag> -->
                     </configuration>
                 </plugin>
