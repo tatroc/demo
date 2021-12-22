@@ -1,7 +1,7 @@
 #!/bin/bash
 
-DIR=$(git diff HEAD~1 --name-only | grep '/' | awk -F '/' '{ print $1 }' | head -n 1)
-echo "Working on directory $DIR"
+DIRECTORY_LIST=$(git diff HEAD~1 --name-only | grep '/' | awk -F '/' '{ print $1 }' | sort -u)
+echo "Working on directory $DIRECTORY_LIST"
 
 
 TREE_CLEAN=$(git ls-files --deleted --modified --others --exclude-standard | wc -l)
@@ -14,47 +14,57 @@ fi
 
 
 
-if [ -z "$DIR" ]
+if [ -z "$DIRECTORY_LIST" ]
 then
-      echo "var \$DIR is empty, exiting..."
+      echo "var \$DIRECTORY_LIST is empty, exiting..."
       exit 1
 else
-      echo "var \$DIR is NOT empty"
+      echo "var \$DIRECTORY_LIST is NOT empty"
 fi
 P=$(PWD)
-echo "In directory $P "
-
-cd $DIR
-mvn --batch-mode release:clean
+echo "In directory $P"
 
 
-mvn --batch-mode release:prepare
-if [ $? -eq 0 ]; then
-   echo OK
-else
-   echo "release:prepare failed"
-   exit 1
-fi
+for dir in "${DIRECTORY_LIST[@]}"
+do
 
+    cd $dir
 
+    mvn --batch-mode release:clean
+    if [ $? -eq 0 ]; then
+        echo OK
+    else
+        echo "release:clean failed for module $dir"
+        exit 1
+    fi
 
-mvn --batch-mode release:perform
-if [ $? -eq 0 ]; then
-   echo OK
-else
-   echo "release:perform failed"
-   exit 1
-fi
+    mvn --batch-mode release:prepare
+    if [ $? -eq 0 ]; then
+        echo OK
+    else
+        echo "release:prepare failed for module $dir"
+        exit 1
+    fi
 
-mvn github-release:github-release
-if [ $? -eq 0 ]; then
-   echo OK
-else
-   echo "github-release:github-release failed"
-   exit 1
-fi
+    mvn --batch-mode release:perform
+    if [ $? -eq 0 ]; then
+        echo OK
+    else
+        echo "release:perform failed for module $dir"
+        exit 1
+    fi
 
+    mvn github-release:github-release
+    if [ $? -eq 0 ]; then
+        echo OK
+    else
+        echo "github-release:github-release failed for module $dir"
+        exit 1
+    fi
 
+    cd ..
+
+done
 
 #version=$(git describe --tags `git rev-list --tags --max-count=1`)
 
