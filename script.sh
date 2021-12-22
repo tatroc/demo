@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DIR=$(git diff HEAD~1 --name-only | grep '/' | awk -F '/' '{ print $1 }' | head -n 1)
-echo $DIR
+echo "Working on directory $DIR"
 
 if [ -z "$DIR" ]
 then
@@ -15,7 +15,31 @@ echo "In directory $P "
 
 cd $DIR
 mvn --batch-mode release:prepare
+if [ $? -eq 0 ]; then
+   echo OK
+else
+   echo "release:prepare failed"
+   exit 1
+fi
+
+
+
 mvn --batch-mode release:perform
+if [ $? -eq 0 ]; then
+   echo OK
+else
+   echo "release:perform failed"
+   exit 1
+fi
+
+mvn github-release:github-release
+if [ $? -eq 0 ]; then
+   echo OK
+else
+   echo "github-release:github-release failed"
+   exit 1
+fi
+
 
 
 #version=$(git describe --tags `git rev-list --tags --max-count=1`)
