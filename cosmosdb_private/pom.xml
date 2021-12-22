@@ -3,7 +3,7 @@
    
         <groupId>org.kna</groupId>
         <artifactId>cosmosdb_private</artifactId>
-        <version>0.1.23-SNAPSHOT</version>
+        <version>0.1.22-SNAPSHOT</version>
         <!-- <relativePath>../pom.xml</relativePath> -->
 
         <scm>
@@ -24,7 +24,7 @@
     </distributionManagement>
 
     <packaging>pom</packaging>
-    <name>Packaging :: cosmosdb_private</name>
+    <name>Packaging :: ${project.artifactId}</name>
     <build>
     
         <!-- <finalName>${project.artifactId}-${project.version}</finalName> -->
