@@ -25,6 +25,9 @@ P=$(PWD)
 echo "In directory $P "
 
 cd $DIR
+mvn --batch-mode release:clean
+
+
 mvn --batch-mode release:prepare
 if [ $? -eq 0 ]; then
    echo OK
