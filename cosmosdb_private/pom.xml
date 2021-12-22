@@ -52,18 +52,13 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
+                <version>3.0.0</version>
                 <executions>
                   <execution>
                     <phase>initialize</phase>
                     <configuration>
                       <target>
                         <copy file="../prop.properties" tofile="/tmp/prop.properties" />
-                        <!--
-                          Place any Ant task here. You can add anything
-                          you can add between <target> and </target> in a
-                          build.xml.
-                        -->
-        
                       </target>
                     </configuration>
                     <goals>
