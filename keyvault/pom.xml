@@ -6,7 +6,6 @@
     <scm>
         <connection>scm:git:ssh://git@github.com/tatroc/demo.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/tatroc/demo.git</developerConnection>
-        <tag>HEAD</tag>
     </scm>
     <distributionManagement>
         <repository>
@@ -20,6 +19,31 @@
     <build>
         <!-- <finalName>${project.artifactId}-${project.version}</finalName> -->
         <plugins>
+          <plugin>
+            <groupId>com.ragedunicorn.tools.maven</groupId>
+            <artifactId>github-release-maven-plugin</artifactId>
+            <version>1.0.3</version>
+            <executions>
+              <execution>
+                <id>default-cli</id>
+                <configuration>
+                  <owner>tatroc</owner>
+                  <repository>demo</repository>
+                  <server>github</server>
+                  <tagName>${project.artifactId}-${project.version}</tagName>
+                  <name>${project.artifactId}-${project.version}</name>
+                <!--  <targetCommitish>master</targetCommitish> -->
+                  <body>release description overwritten by release notes version ${project.artifactId}-${project.version}</body>
+                  <releaseNotes>README.md</releaseNotes>
+                 <!-- <assets>
+                    <asset>src/main/resources/asset-plain-text-example.txt</asset>
+                    <asset>src/main/resources/asset-zip-example.zip</asset>
+                  </assets> -->
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+
             <!-- <plugin>
                 <groupId>com.coderplus.maven.plugins</groupId>
                 <artifactId>copy-rename-maven-plugin</artifactId>
@@ -106,7 +130,7 @@
                 <artifactId>maven-release-plugin</artifactId>
                 <version>3.0.0-M4</version>
                 <configuration>
-                    <tagNameFormat>${project.artifactId}-${project.version}</tagNameFormat>
+                    <tagNameFormat>@{project.artifactId}-@{project.version}</tagNameFormat>
                     <!-- <tag>${project.artifactId}-${project.version}</tag> -->
                     <!-- <updateWorkingCopyVersions>false</updateWorkingCopyVersions> -->
                 </configuration>
