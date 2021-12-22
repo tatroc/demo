@@ -3,7 +3,7 @@
    
         <groupId>org.kna</groupId>
         <artifactId>cosmosdb_private</artifactId>
-        <version>0.1.71-SNAPSHOT</version>
+        <version>0.1.70-SNAPSHOT</version>
         <!-- <relativePath>../pom.xml</relativePath> -->
 
         <scm>
@@ -49,7 +49,7 @@
                     </execution>
                 </executions>
             </plugin> -->
-            <plugin>
+         <!--   <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
                 <version>3.0.0</version>
@@ -58,8 +58,7 @@
                     <phase>initialize</phase>
                     <configuration>
                       <target>
-                      <!--  <property name="propPath" value="${project.artifactId}/prop.properties"/> -->
-                      <!--   <copy file="../prop.properties" tofile="/tmp/prop.properties" /> -->
+
                         <copy file="../prop.properties" tofile="./prop.properties" />
                       </target>
                     </configuration>
@@ -68,7 +67,7 @@
                     </goals>
                   </execution>
                 </executions>
-              </plugin>
+              </plugin> -->
 
         <!--    <plugin>
                 <groupId>org.codehaus.mojo</groupId>
