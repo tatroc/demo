@@ -3,7 +3,7 @@
    
         <groupId>org.kna</groupId>
         <artifactId>cosmosdb_private</artifactId>
-        <version>0.1.87-SNAPSHOT</version>
+        <version>0.1.86-SNAPSHOT</version>
 
 
         <scm>
@@ -148,7 +148,7 @@
                     <configuration>
                         <tagNameFormat>${project.artifactId}-${project.version}</tagNameFormat>
                        <!-- <tag>${project.artifactId}-${project.version}</tag>-->
-                        <updateWorkingCopyVersions>true</updateWorkingCopyVersions>
+                        <!-- <updateWorkingCopyVersions>false</updateWorkingCopyVersions> -->
                     </configuration>
                 </plugin>
         </plugins>
