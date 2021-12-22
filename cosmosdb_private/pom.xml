@@ -3,14 +3,14 @@
    
         <groupId>org.kna</groupId>
         <artifactId>cosmosdb_private</artifactId>
-        <version>0.1.92</version>
+        <version>0.1.93-SNAPSHOT</version>
 
 
         <scm>
             <connection>scm:git:ssh://git@github.com/tatroc/demo.git</connection>
             <developerConnection>scm:git:ssh://git@github.com/tatroc/demo.git</developerConnection>
         <!--  <tag>cosmosdb_private-0.1.65-SNAPSHOT</tag> -->
-            <tag>cosmosdb_private-0.1.92</tag>
+            <tag>cosmosdb_private-0.1.90-SNAPSHOT</tag>
         </scm>
 
     <distributionManagement>
