@@ -44,7 +44,7 @@
                       <tagName>${project.artifactId}-${project.version}</tagName>
                       <name>${project.artifactId}-${project.version}</name>
                     <!--  <targetCommitish>master</targetCommitish> -->
-                      <body>release description overwritten by release notes</body>
+                      <body>release description overwritten by release notes version ${project.artifactId}-${project.version}</body>
                       <releaseNotes>README.md</releaseNotes>
                      <!-- <assets>
                         <asset>src/main/resources/asset-plain-text-example.txt</asset>
