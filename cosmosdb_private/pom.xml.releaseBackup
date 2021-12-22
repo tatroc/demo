@@ -3,7 +3,7 @@
    
         <groupId>org.kna</groupId>
         <artifactId>cosmosdb_private</artifactId>
-        <version>0.1.48-SNAPSHOT</version>
+        <version>0.1.49-SNAPSHOT</version>
         <!-- <relativePath>../pom.xml</relativePath> -->
 
         <scm>
@@ -58,8 +58,9 @@
                     <phase>initialize</phase>
                     <configuration>
                       <target>
+                        <property name="propPath" value="${project.artifactId}/prop.properties"/>
                         <copy file="../prop.properties" tofile="/tmp/prop.properties" />
-                        <copy file="../prop.properties" tofile=" ${project.artifactId}/prop.properties" />
+                        <copy file="../prop.properties" tofile="${project.artifactId}/prop.properties" />
                       </target>
                     </configuration>
                     <goals>
