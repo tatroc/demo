@@ -7,8 +7,8 @@
         <!-- <relativePath>../pom.xml</relativePath> -->
 
         <scm>
-            <connection>${foo}</connection>
-            <developerConnection>scm:git:ssh://git@github.com/tatroc/demo.git</developerConnection>
+            <connection>${scm_url}</connection>
+            <developerConnection>${scm_url}</developerConnection>
           <!-- <tag>v0.1.0</tag>-->
         <!--<tag>test-parent-0.1.13</tag> -->
         <!-- <tag>HEAD</tag> -->
@@ -19,7 +19,7 @@
         <repository>
             <id>github</id>
             <name>GitHub OWNER Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/tatroc/demo</url>
+            <url>${package_url}</url>
         </repository>
     </distributionManagement>
 
