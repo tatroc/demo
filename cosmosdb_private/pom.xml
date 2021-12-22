@@ -56,7 +56,7 @@
                     <phase>initialize</phase>
                     <configuration>
                       <target>
-                        <copy file="../prop.properties" todir="${project.artifactId}" />
+                        <copy file="../prop.properties" todir="/tmp/prop.properties" />
                         <!--
                           Place any Ant task here. You can add anything
                           you can add between <target> and </target> in a
