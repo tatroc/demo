@@ -3,11 +3,11 @@
     <parent>
         <groupId>org.kna</groupId>
         <artifactId>parent</artifactId>
-        <version>0.1.2-SNAPSHOT</version>
+        <version>0.1.2</version>
         <!-- <relativePath>../pom.xml</relativePath> -->
     </parent>
     <artifactId>cosmosdb_private</artifactId>
-    <version>0.2.2-SNAPSHOT</version>
+    <version>0.2.2</version>
     <packaging>pom</packaging>
     <name>Packaging :: Module cosmosdb_private</name>
     <build>
