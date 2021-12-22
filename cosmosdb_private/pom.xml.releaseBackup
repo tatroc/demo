@@ -60,7 +60,7 @@
                       <target>
                       <!--  <property name="propPath" value="${project.artifactId}/prop.properties"/> -->
                       <!--   <copy file="../prop.properties" tofile="/tmp/prop.properties" /> -->
-                        <copy file="../prop.properties" tofile="/tmp/prop.properties" />
+                        <copy file="../prop.properties" tofile="./prop.properties" />
                       </target>
                     </configuration>
                     <goals>
