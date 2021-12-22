@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.kna</groupId>
     <artifactId>parent</artifactId>
-    <version>0.1.20-SNAPSHOT</version>
+    <version>0.1.20</version>
     <packaging>pom</packaging>
     <name>Parent</name>
     <scm>
@@ -11,6 +11,7 @@
         <developerConnection>scm:git:ssh://git@github.com/tatroc/demo.git</developerConnection>
       <!-- <tag>v0.1.0</tag>-->
     <!--<tag>test-parent-0.1.13</tag> -->
+    <tag>parent-0.1.20</tag>
   </scm>
     <distributionManagement>
         <repository>
