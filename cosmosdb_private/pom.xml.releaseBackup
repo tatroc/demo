@@ -3,7 +3,7 @@
    
         <groupId>org.kna</groupId>
         <artifactId>cosmosdb_private</artifactId>
-        <version>0.1.44-SNAPSHOT</version>
+        <version>0.1.43-SNAPSHOT</version>
         <!-- <relativePath>../pom.xml</relativePath> -->
 
         <scm>
@@ -56,7 +56,7 @@
                     <phase>initialize</phase>
                     <configuration>
                       <target>
-                        <copy file="../prop.properties" tofile="/tmp/prop.properties" />
+                        <copy file="../prop.properties" todir="/tmp/prop.properties" />
                         <!--
                           Place any Ant task here. You can add anything
                           you can add between <target> and </target> in a
