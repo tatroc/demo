@@ -3,11 +3,11 @@
     <parent>
         <groupId>org.kna</groupId>
         <artifactId>parent</artifactId>
-        <version>0.1.7-SNAPSHOT</version>
+        <version>0.1.8-SNAPSHOT</version>
         <!-- <relativePath>../pom.xml</relativePath> -->
     </parent>
     <artifactId>cosmosdb_private</artifactId>
-    <version>0.2.7-SNAPSHOT</version>
+    <version>0.2.8-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Packaging :: Module cosmosdb_private</name>
     <build>
@@ -38,7 +38,8 @@
                     <artifactId>maven-release-plugin</artifactId>
                     <version>3.0.0-M4</version>
                     <configuration>
-                        <tagNameFormat>@{project.artifactId}-@{project.version}</tagNameFormat>
+                        <tagNameFormat>${project.artifactId}-${project.version}</tagNameFormat>
+                        <tag>${project.artifactId}-${project.version}</tag>
                     </configuration>
                 </plugin>
         </plugins>
