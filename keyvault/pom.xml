@@ -3,7 +3,6 @@
     <groupId>org.kna</groupId>
     <artifactId>keyvault</artifactId>
     <version>0.1.79-SNAPSHOT</version>
-    <!-- <relativePath>../pom.xml</relativePath> -->
     <scm>
         <connection>scm:git:ssh://git@github.com/tatroc/demo.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/tatroc/demo.git</developerConnection>

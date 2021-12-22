@@ -5,7 +5,7 @@ echo $DIR
 
 if [ -z "$DIR" ]
 then
-      echo "var \$DIR is empty"
+      echo "var \$DIR is empty, exiting..."
       exit 1
 else
       echo "var \$DIR is NOT empty"
