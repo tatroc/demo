@@ -80,7 +80,7 @@
                       <tagName>${project.artifactId}-${releasedVersion.version}</tagName>
                       <name>${project.artifactId}-${releasedVersion.version}</name>
                     <!--  <targetCommitish>master</targetCommitish> -->
-                      <body>release description overwritten by release notes version ${project.artifactId}-${releasedVersion.version}</body>
+                      <body>release description overwritten by release notes version</body>
                       <releaseNotes>README.md</releaseNotes>
                      <assets>
                       <!--   <asset>src/main/resources/asset-plain-text-example.txt</asset> -->
