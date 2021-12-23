@@ -3,7 +3,7 @@
    
         <groupId>org.kna</groupId>
         <artifactId>cosmosdb_private</artifactId>
-        <version>0.1.112-SNAPSHOT</version>
+        <version>0.1.111-SNAPSHOT</version>
 
 
     <scm>
@@ -130,7 +130,7 @@
                 <executions>
                     <execution>
                         <id>package-the-assembly</id>
-                        <phase>release:prepare</phase>
+                        <phase>release</phase>
                         <goals>
                             <goal>single</goal>
                         </goals>
