@@ -3,7 +3,7 @@
    
         <groupId>org.kna</groupId>
         <artifactId>cosmosdb_private</artifactId>
-        <version>1.0.262-SNAPSHOT</version>
+        <version>1.0.263-SNAPSHOT</version>
 
 
     <scm>
@@ -11,7 +11,6 @@
         <developerConnection>scm:git:ssh://git@github.com/tatroc/demo.git</developerConnection>
   
     
-    <tag>HEAD</tag>
   </scm>
 <!-- 6 -->
     <distributionManagement>
@@ -77,10 +76,10 @@
                       <server>github</server>
                       <!--  <tagName>${project.artifactId}-${project.version}</tagName>-->
                       <!--  <name>${project.artifactId}-${project.version}</name>-->
-                        <tagName>${project.artifactId}-${project.version}</tagName>
-                      <name>${project.artifactId}-${project.version}</name>
+                        <tagName>${project.artifactId}-${releasedVersion.version}</tagName>
+                      <name>${project.artifactId}-${releasedVersion.version}</name>
                     <!--  <targetCommitish>master</targetCommitish> -->
-                      <body>release description overwritten by release notes version ${project.artifactId}-${project.version}</body>
+                      <body>release description overwritten by release notes version ${project.artifactId}-${releasedVersion.version}</body>
                       <releaseNotes>README.md</releaseNotes>
                      <assets>
                       <!--   <asset>src/main/resources/asset-plain-text-example.txt</asset> -->
