@@ -9,8 +9,6 @@
     <includeBaseDirectory>false</includeBaseDirectory>
     <fileSets>
         <fileSet>
-            <!-- <workDirectory>../assembly/work</workDirectory> -->
-            <!-- <outputDirectory>${project.artifactId}</outputDirectory> -->
             <outputDirectory></outputDirectory>
             <includes>
                 <include>*.*</include>
