@@ -21,13 +21,13 @@ then
 else
       echo "var \$DIRECTORY_LIST is NOT empty"
 fi
-P=$(PWD)
-echo "In directory $P"
+BASE_DIR=$(pwd)
+echo "Base directory $BASE_DIR"
 
 
 for dir in "${DIRECTORY_LIST[@]}"
 do
-
+    echo "${dir}"
     cd $dir
 
     mvn --batch-mode release:clean
