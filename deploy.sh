@@ -45,7 +45,7 @@ declare -p DIRECTORY_LIST
 
 if [ -z "$DIRECTORY_LIST" ]
 then
-      echo "\$DIRECTORY_LIST is empty. Exiting"
+      echo "\$DIRECTORY_LIST is empty, nothing to do. Exiting"
       exit 1
 else
       echo "\$DIRECTORY_LIST is NOT empty"
