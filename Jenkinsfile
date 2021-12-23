@@ -4,6 +4,7 @@ pipeline {
     GITHUB_CREDS = credentials('tatroc_gh')
     GITHUB_USERNAME = "$GITHUB_CREDS_USR"
     GITHUB_PASSWORD = "$GITHUB_CREDS_PSW"
+    DEBIAN_FRONTEND = "noninteractive"
   }
   stages {
 
@@ -18,7 +19,7 @@ pipeline {
           cat /etc/os-release
           id
           apt update
-          apt install maven
+          apt install -y maven
           mvn -v
 
           '''
