@@ -1,7 +1,7 @@
 pipeline {
   agent { label 'cloudops-dev' }
   environment {
-    GITHUB_CREDS = credentials('tatroc')
+    GITHUB_CREDS = credentials('tatroc_gh')
     GITHUB_USERNAME = "$GITHUB_CREDS_USR"
     GITHUB_PASSWORD = "$GITHUB_CREDS_PSW"
   }
