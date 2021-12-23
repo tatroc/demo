@@ -22,7 +22,7 @@
     </distributionManagement>
 
     <packaging>pom</packaging>
-    <name>Packaging ::: ${project.artifactId} ${releaseVersion}</name>
+    <name>Packaging ::: ${project.artifactId} ${project.version}</name>
     <build>
         <plugins>
             <plugin>
@@ -36,7 +36,9 @@
                       <owner>tatroc</owner>
                       <repository>demo</repository>
                       <server>github</server>
-                      <tagName>${project.artifactId}-${project.version}</tagName>
+                      <!--  <tagName>${project.artifactId}-${project.version}</tagName>-->
+                      <!--  <name>${project.artifactId}-${project.version}</name>-->
+                        <tagName>${project.artifactId}-${project.version}</tagName>
                       <name>${project.artifactId}-${project.version}</name>
                     <!--  <targetCommitish>master</targetCommitish> -->
                       <body>release description overwritten by release notes version ${project.artifactId}-${project.version}</body>
@@ -44,7 +46,7 @@
                      <assets>
                       <!--   <asset>src/main/resources/asset-plain-text-example.txt</asset> -->
                        <!-- <asset>target/${project.artifactId}-${project.version}-tf-module.zip</asset> -->
-                        <asset>target/${project.artifactId}-${releaseVersion}-tf-module.zip</asset>
+                        <asset>target/${project.artifactId}-${project.version}-tf-module.zip</asset>
                       </assets>
                     </configuration>
                   </execution>
