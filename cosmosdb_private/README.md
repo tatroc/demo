@@ -1,7 +1,7 @@
 # Azure CosmosDB with Private Endpoint
 version
 This module will create an Azure CosmosDB Account and a Private Endpoint Connection. It will configure the CosmosDB Account to only allow traffic from specified network IP Address ranges, and will also configure the Private Endpoint Connection to provide an internal IP address in the specified subnet.
-Test comment 1
+Test comment 2
 ## Usage
 ```hcl
 module "example" {

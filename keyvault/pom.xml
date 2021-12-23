@@ -7,7 +7,7 @@
 <!-- 9 -->
 
     <scm>
-        <connection>scm:git:ssh://git@github.com/tatroc/demo.git</connection>
+        <connection>scm:git:https://git@github.com/tatroc/demo.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/tatroc/demo.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
