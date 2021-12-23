@@ -11,6 +11,7 @@ if [  $TREE_CLEAN -eq 0 ]; then
    echo "Working tree clean"
 else
    echo "Working tree is not clean, please commit changes. Exiting..."
+   git status
    exit 1
 fi
 
@@ -26,7 +27,7 @@ fi
 BASE_DIR=$(pwd)
 echo "Base directory $BASE_DIR"
 
-
+# Package and Push TF modules to repository
 for dir in "${DIRECTORY_LIST[@]}"
 do
     echo "${dir}"

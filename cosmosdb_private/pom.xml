@@ -40,10 +40,10 @@
                     <!--  <targetCommitish>master</targetCommitish> -->
                       <body>release description overwritten by release notes version ${project.artifactId}-${project.version}</body>
                       <releaseNotes>README.md</releaseNotes>
-                     <!-- <assets>
-                        <asset>src/main/resources/asset-plain-text-example.txt</asset>
-                        <asset>src/main/resources/asset-zip-example.zip</asset>
-                      </assets> -->
+                     <assets>
+                      <!--   <asset>src/main/resources/asset-plain-text-example.txt</asset> -->
+                        <asset>target/${project.artifactId}-${project.version}.zip</asset>
+                      </assets>
                     </configuration>
                   </execution>
                 </executions>
