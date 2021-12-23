@@ -28,16 +28,16 @@ BASE_DIR=$(pwd)
 echo "Base directory ${BASE_DIR}"
 
 # Package and Push TF modules to repository
-for dir in "${DIRECTORY_LIST[@]}"
+for wrkdir in "${DIRECTORY_LIST[@]}"
 do
-    echo "Working on directory: ./${dir}"
-    cd $dir
+    echo "Working on directory: ./${wrkdir}"
+    cd $wrkdir
 
     mvn --batch-mode build-helper:released-version release:clean release:prepare release:perform install github-release:github-release
     if [ $? -eq 0 ]; then
         echo OK
     else
-        echo "release failed for module ${dir}"
+        echo "release failed for module ${wrkdir}"
         exit 1
     fi
 
