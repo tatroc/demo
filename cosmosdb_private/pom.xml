@@ -3,7 +3,7 @@
    
         <groupId>org.kna</groupId>
         <artifactId>cosmosdb_private</artifactId>
-        <version>1.0.258-SNAPSHOT</version>
+        <version>1.0.261-SNAPSHOT</version>
 
 
     <scm>
@@ -26,11 +26,42 @@
     <build>
         <plugins>
             <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.7</version>
+                <executions>
+                     <execution>
+                          <phase>install</phase>
+                          <configuration>
+                                <target>
+                                    <echoproperties />
+                                </target>
+                          </configuration>
+                          <goals>
+                              <goal>run</goal>
+                          </goals>
+                     </execution>
+                </executions>
+            </plugin>
+
+
+            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>versions-maven-plugin</artifactId>
                 <version>2.8.1</version>
             </plugin>
-
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>3.2.0</version>
+                <executions>
+                  <execution>
+                    <id>released-version</id>
+                    <goals>
+                      <goal>released-version</goal>
+                    </goals>
+                  </execution>
+                </executions>
+              </plugin>
 
             <plugin>
                 <groupId>com.ragedunicorn.tools.maven</groupId>
@@ -53,7 +84,7 @@
                      <assets>
                       <!--   <asset>src/main/resources/asset-plain-text-example.txt</asset> -->
                        <!-- <asset>target/${project.artifactId}-${project.version}-tf-module.zip</asset> -->
-                        <asset>target/${project.artifactId}-${project.version}-tf-module.zip</asset>
+                        <asset>target/${project.artifactId}-${releasedVersion.version}-tf-module.zip</asset>
                       </assets>
                     </configuration>
                   </execution>
