@@ -3,6 +3,9 @@
     <groupId>org.kna</groupId>
     <artifactId>keyvault</artifactId>
     <version>0.1.81-SNAPSHOT</version>
+
+<!-- 8 -->
+
     <scm>
         <connection>scm:git:ssh://git@github.com/tatroc/demo.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/tatroc/demo.git</developerConnection>

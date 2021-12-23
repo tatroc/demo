@@ -13,7 +13,7 @@
     
     <tag>HEAD</tag>
   </scm>
-<!-- 7 -->
+<!--8 -->
     <distributionManagement>
         <repository>
             <id>github</id>
