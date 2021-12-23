@@ -2,14 +2,14 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.kna</groupId>
     <artifactId>keyvault</artifactId>
-    <version>0.1.82</version>
+    <version>0.1.83-SNAPSHOT</version>
 
 <!-- 9 -->
 
     <scm>
         <connection>scm:git:ssh://git@github.com/tatroc/demo.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/tatroc/demo.git</developerConnection>
-        <tag>keyvault-0.1.82</tag>
+        <tag>HEAD</tag>
     </scm>
     <distributionManagement>
         <repository>
