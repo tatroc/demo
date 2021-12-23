@@ -22,7 +22,7 @@
     </distributionManagement>
 
     <packaging>pom</packaging>
-    <name>Packaging ::: ${project.artifactId} :: ${releaseVersion}- ${assembly.id}</name>
+    <name>Packaging ::: ${project.artifactId}</name>
     <build>
         <plugins>
             <plugin>
