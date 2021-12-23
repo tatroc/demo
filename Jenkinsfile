@@ -16,6 +16,9 @@ pipeline {
           env
           cat ~/.m2/settings.xml
           cat /etc/os-release
+          id
+          sudo apt update
+          sudo apt install maven
           mvn -v
 
           '''
