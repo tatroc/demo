@@ -39,8 +39,17 @@ done
 
 cat "${WORK_DIR}/${COMMITTED_UNTAGGED_FILES}"
 
-DIRECTORY_LIST=($(cat ${WORK_DIR}/${COMMITTED_UNTAGGED_FILES} | grep '/' | awk -F '/' '{ print $1 }' | sort -u))
+DIRECTORY_LIST=($(cat ${WORK_DIR}/${COMMITTED_UNTAGGED_FILES} | grep -v -E "*.xml" | grep '/' | awk -F '/' '{ print $1 }' | sort -u))
 declare -p DIRECTORY_LIST
+
+if [ -z "$DIRECTORY_LIST" ]
+then
+      echo "\$DIRECTORY_LIST is empty, nothing to do. Exiting"
+      exit 1
+else
+      echo "\$DIRECTORY_LIST is NOT empty"
+fi
+
 
 echo "Working with directories ${DIRECTORY_LIST[@]}"
 
