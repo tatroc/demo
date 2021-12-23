@@ -18,7 +18,6 @@
     <packaging>pom</packaging>
     <name>Packaging :: ${project.artifactId}</name>
     <build>
-        <!-- <finalName>${project.artifactId}-${project.version}</finalName> -->
         <plugins>
           <plugin>
             <groupId>com.ragedunicorn.tools.maven</groupId>

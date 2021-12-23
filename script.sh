@@ -1,7 +1,9 @@
 #!/bin/bash
 
-DIRECTORY_LIST=$(git diff HEAD~1 --name-only | grep '/' | awk -F '/' '{ print $1 }' | sort -u)
-echo "Working on directory $DIRECTORY_LIST"
+DIRECTORY_LIST=($(git diff HEAD~1 --name-only | grep '/' | awk -F '/' '{ print $1 }' | sort -u))
+declare -p DIRECTORY_LIST
+
+echo "Working with directories ${DIRECTORY_LIST[@]}"
 
 
 TREE_CLEAN=$(git ls-files --deleted --modified --others --exclude-standard | wc -l)
