@@ -21,7 +21,7 @@
     </distributionManagement>
 
     <packaging>pom</packaging>
-    <name>Packaging :: ${project.artifactId}</name>
+    <name>Packaging ::: ${project.artifactId} :: ${releaseVersion}-</name>
     <build>
         <plugins>
             <plugin>
