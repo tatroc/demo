@@ -19,6 +19,45 @@
     <name>Packaging :: ${project.artifactId}</name>
     <build>
         <plugins>
+
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.7</version>
+                <executions>
+                     <execution>
+                          <phase>install</phase>
+                          <configuration>
+                                <target>
+                                    <echoproperties />
+                                </target>
+                          </configuration>
+                          <goals>
+                              <goal>run</goal>
+                          </goals>
+                     </execution>
+                </executions>
+            </plugin>
+
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>2.8.1</version>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>3.2.0</version>
+                <executions>
+                  <execution>
+                    <id>released-version</id>
+                    <goals>
+                      <goal>released-version</goal>
+                    </goals>
+                  </execution>
+                </executions>
+              </plugin>
+
           <plugin>
             <groupId>com.ragedunicorn.tools.maven</groupId>
             <artifactId>github-release-maven-plugin</artifactId>
@@ -30,14 +69,14 @@
                   <owner>tatroc</owner>
                   <repository>demo</repository>
                   <server>github</server>
-                  <tagName>${project.artifactId}-${project.version}</tagName>
-                  <name>${project.artifactId}-${project.version}</name>
+                  <tagName>${project.artifactId}-${releasedVersion.version}</tagName>
+                  <name>${project.artifactId}-${releasedVersion.version}</name>
                 <!--  <targetCommitish>master</targetCommitish> -->
-                  <body>release description overwritten by release notes version ${project.artifactId}-${project.version}</body>
+                  <body>release description overwritten by release notes version</body>
                   <releaseNotes>README.md</releaseNotes>
                   
                   <assets>
-                    <asset>target/${project.artifactId}-${releaseVersion}-${assembly.id}.zip</asset>
+                    <asset>target/${project.artifactId}-${releasedVersion.version}-tf-module.zip</asset>
                   </assets>
                 </configuration>
               </execution>

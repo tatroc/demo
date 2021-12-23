@@ -25,19 +25,19 @@ else
       echo "var \$DIRECTORY_LIST is NOT empty"
 fi
 BASE_DIR=$(pwd)
-echo "Base directory $BASE_DIR"
+echo "Base directory ${BASE_DIR}"
 
 # Package and Push TF modules to repository
 for dir in "${DIRECTORY_LIST[@]}"
 do
-    echo "${dir}"
+    echo "Working on directory: ./${dir}"
     cd $dir
 
     mvn --batch-mode release:clean
     if [ $? -eq 0 ]; then
         echo OK
     else
-        echo "release:clean failed for module $dir"
+        echo "release:clean failed for module ${dir}"
         exit 1
     fi
 
@@ -45,7 +45,7 @@ do
     if [ $? -eq 0 ]; then
         echo OK
     else
-        echo "release:prepare failed for module $dir"
+        echo "release:prepare failed for module ${dir}"
         exit 1
     fi
 
@@ -53,7 +53,15 @@ do
     if [ $? -eq 0 ]; then
         echo OK
     else
-        echo "release:perform failed for module $dir"
+        echo "release:perform failed for module ${dir}"
+        exit 1
+    fi
+
+    mvn package
+    if [ $? -eq 0 ]; then
+        echo OK
+    else
+        echo "package failed for module ${dir}"
         exit 1
     fi
 
@@ -61,7 +69,7 @@ do
     if [ $? -eq 0 ]; then
         echo OK
     else
-        echo "github-release:github-release failed for module $dir"
+        echo "github-release:github-release failed for module ${dir}"
         exit 1
     fi
 

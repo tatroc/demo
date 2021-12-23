@@ -83,8 +83,6 @@
                       <body>release description overwritten by release notes version</body>
                       <releaseNotes>README.md</releaseNotes>
                      <assets>
-                      <!--   <asset>src/main/resources/asset-plain-text-example.txt</asset> -->
-                       <!-- <asset>target/${project.artifactId}-${project.version}-tf-module.zip</asset> -->
                         <asset>target/${project.artifactId}-${releasedVersion.version}-tf-module.zip</asset>
                       </assets>
                     </configuration>
