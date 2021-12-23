@@ -42,7 +42,7 @@
                       <releaseNotes>README.md</releaseNotes>
                      <assets>
                       <!--   <asset>src/main/resources/asset-plain-text-example.txt</asset> -->
-                        <asset>target/${project.artifactId}-${project.version}.zip</asset>
+                        <asset>target/${project.artifactId}-${releaseVersion}-${assembly.id}.zip</asset>
                       </assets>
                     </configuration>
                   </execution>

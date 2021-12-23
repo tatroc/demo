@@ -37,7 +37,7 @@
                   <releaseNotes>README.md</releaseNotes>
                   
                   <assets>
-                    <asset>target/${project.artifactId}-${project.version}.zip</asset>
+                    <asset>target/${project.artifactId}-${releaseVersion}-${assembly.id}.zip</asset>
                   </assets>
                 </configuration>
               </execution>
