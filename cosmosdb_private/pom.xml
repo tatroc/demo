@@ -130,7 +130,7 @@
                 <executions>
                     <execution>
                         <id>package-the-assembly</id>
-                        <phase>package</phase>
+                        <phase>release</phase>
                         <goals>
                             <goal>single</goal>
                         </goals>
