@@ -1,8 +1,20 @@
-def GIT_REPO="demo"
-def SCM_URL="https://github.com/tatroc/${GIT_REPO}.git"
-def GIT_CRED_ID="tatroc_gh"
-def GIT_BRANCH="dev"
-def MVN_URL="https://maven.pkg.github.com/tatroc/demo"
+
+def envr = "sbx"
+
+if (envr == 'sbx') {
+    def SCM_REPO="demo"
+    def SCM_OWNER="tatroc"
+    def GIT_REPO="demo"
+    def SCM_URL="https://github.com/tatroc/${GIT_REPO}.git"
+    def GIT_CRED_ID="tatroc_gh"
+    def GIT_BRANCH="dev"
+    def MVN_URL="https://maven.pkg.github.com/tatroc/demo"
+} else {
+    echo 'I execute elsewhere'
+}
+
+
+
 
 pipeline {
   //triggers{pollSCM('*/1 * * * *')}
@@ -13,6 +25,7 @@ pipeline {
     GITHUB_PASSWORD = "$GITHUB_CREDS_PSW"
     DEBIAN_FRONTEND = "noninteractive"
     GIT_AUTHOR_NAME = "jenkins"
+    GIT_AUTHOR_EMAIL = "tss-devops@kaplan.com"
     GIT_COMMITTER_NAME = "$GIT_AUTHOR_NAME"
     MVN_URL = "$MVN_URL"
     SCM_URL = "$SCM_URL"

@@ -27,7 +27,12 @@
   </profiles>
 
   <servers>
-          
+    <server>
+    <id>kss-github.kaplan.com</id>
+    <username>${env.GITHUB_USERNAME}</username>
+    <password>${env.GITHUB_PASSWORD}</password>
+  </server>
+    
 <server>
       <id>github.com</id>
       <username>${env.GITHUB_USERNAME}</username>
