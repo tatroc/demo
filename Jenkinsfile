@@ -120,11 +120,11 @@ environment {
                     sh """
                     #!/bin/bash
                     echo ${envr}
-                    source ./${envr}.env.sh
+                    . ./${envr}.env.sh
                     env
 
                     pwd
-                    ./deploy.sh
+                    #./deploy.sh
                     """
                 }
             }
