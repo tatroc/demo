@@ -12,22 +12,30 @@ if [[ -z "${SCM_URL}" ]]; then
   echo "environment variable \$SCM_URL not set"
   echo "run: source ./env.vars"
   exit 1
+else
+    echo "environment variable \$SCM_URL set to ${SCM_URL}"
 fi
 
 if [[ -z "${MVN_URL}" ]]; then
   echo "environment variable \$MVN_URL not set"
   echo "run: source ./env.vars"
   exit 1
+else
+    echo "environment variable \$MVN_URL set to ${MVN_URL}"
 fi
 
 if [[ -z "${GITHUB_USERNAME}" ]]; then
   echo "environment variable \$GITHUB_USERNAME not set"
   exit 1
+else
+    echo "environment variable \$GITHUB_USERNAME set to ${GITHUB_USERNAME}"
 fi
 
 if [[ -z "${GITHUB_PASSWORD}" ]]; then
   echo "environment variable \$GITHUB_PASSWORD not set"
   exit 1
+else 
+    echo "environment variable \$GITHUB_PASSWORD set to XXXXXXXXXX"
 fi
 
 
@@ -37,7 +45,7 @@ function getmoduledirectories {
 
 WORK_DIR=$(mktemp -d -p "/tmp")
 if [[ ! "${WORK_DIR}" || ! -d "${WORK_DIR}" ]]; then
-  echo "Could not create temp dir"
+  echo "Could not create /tmp dir"
   exit 1
 fi
 
@@ -49,7 +57,7 @@ while read -u4 line ; do
         echo "No tag found in commit: $line"
         echo $line >> "${WORK_DIR}/${HASH_FILE}"
     else
-        echo "Tag found in commit: $line"
+        echo "Latest tag found in commit: $line"
         break
     fi
 done
