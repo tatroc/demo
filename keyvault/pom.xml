@@ -2,14 +2,14 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.kna</groupId>
     <artifactId>keyvault</artifactId>
-    <version>0.1.84</version>
+    <version>0.1.85-SNAPSHOT</version>
 
 <!-- 9 -->
 
     <scm>
       <connection>scm:git:${env.SCM_URL}</connection>
       <developerConnection>scm:git:${env.SCM_URL}</developerConnection>
-        <tag>keyvault-0.1.84</tag>
+        <tag>HEAD</tag>
     </scm>
     <distributionManagement>
         <repository>
