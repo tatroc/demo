@@ -45,10 +45,11 @@ declare -p DIRECTORY_LIST
 
 if [ -z "$DIRECTORY_LIST" ]
 then
-      echo "\$DIRECTORY_LIST is empty, nothing to do. Exiting"
-      exit 0
+    echo "No TF modules were modified"
+    echo "\$DIRECTORY_LIST is empty, nothing to do. Exiting..."
+    exit 0
 else
-      echo "\$DIRECTORY_LIST is NOT empty"
+    echo "\$DIRECTORY_LIST is NOT empty"
 fi
 
 
@@ -58,9 +59,6 @@ for dir in "${DIRECTORY_LIST[@]}"
 do
     echo "Directory: ${dir}"
 done
-
-
-#echo "Working with TF module directories ${DIRECTORY_LIST[@]}"
 
 echo $WORK_DIR
 }
