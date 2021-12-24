@@ -1,3 +1,7 @@
+def GIT_REPO="foo"
+def GIT_URL=""
+def GIT_CRED_ID="tatroc_gh"
+
 pipeline {
   agent { label 'cloudops-dev' }
   environment {
@@ -11,25 +15,27 @@ pipeline {
     stage('Prepare') {
       steps {
           //assuming mvn-settings.xml is at root/current folder, otherwise provide absolute or relative path
-          sh '''
-          #!/bin/bash
-          mkdir -p ~/.m2
-          #ls -la ~
-          cp ./mvn-settings.xml ~/.m2/settings.xml
-          #env
-          #cat ~/.m2/settings.xml
-          #cat /etc/os-release
-          #id
-          dpkg -s maven || EXIT_CODE=$?
-          if [ $EXIT_CODE -eq 1 ]; then
-            apt update
-            apt install -y maven
-          fi
+          dir('demo') {
+            sh '''
+            #!/bin/bash
+            mkdir -p ~/.m2
+            #ls -la ~
+            cp ./mvn-settings.xml ~/.m2/settings.xml
+            #env
+            #cat ~/.m2/settings.xml
+            #cat /etc/os-release
+            #id
+            dpkg -s maven || EXIT_CODE=$?
+            if [ $EXIT_CODE -eq 1 ]; then
+                apt update
+                apt install -y maven
+            fi
 
-          mvn -v
-          #git log --pretty="%D %H" --decorate=short --decorate-refs=refs/tags
-          #git branch
-          '''
+            mvn -v
+            #git log --pretty="%D %H" --decorate=short --decorate-refs=refs/tags
+            #git branch
+            '''
+          }
       }
     }
 
@@ -42,7 +48,7 @@ pipeline {
                     branches: [[name: '*/dev']], 
                     extensions: [[$class: 'LocalBranch', localBranch: "**"]],
                     submoduleCfg: [],
-                    userRemoteConfigs: [[credentialsId: 'tatroc_gh', url: 'https://github.com/tatroc/demo.git']]])
+                    userRemoteConfigs: [[credentialsId: GIT_CRED_ID, url: 'https://github.com/tatroc/demo.git']]])
 
                 sh '''
                 ls -la
