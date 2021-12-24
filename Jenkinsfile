@@ -12,13 +12,13 @@ def envr = "sbx"
 // } else {
 //     echo 'I execute elsewhere'
 // }
-    def SCM_REPO="demo"
-    def SCM_OWNER="tatroc"
-    def GIT_REPO="demo"
-    def SCM_URL="https://github.com/tatroc/${GIT_REPO}.git"
-    def GIT_CRED_ID="tatroc_gh"
-    def GIT_BRANCH="dev"
-    def MVN_URL="https://maven.pkg.github.com/tatroc/demo"
+    // def SCM_REPO="demo"
+    // def SCM_OWNER="tatroc"
+    // def GIT_REPO="demo"
+    // def SCM_URL="https://github.com/tatroc/${GIT_REPO}.git"
+    // def GIT_CRED_ID="tatroc_gh"
+    // def GIT_BRANCH="dev"
+    // def MVN_URL="https://maven.pkg.github.com/tatroc/demo"
 
 
 
@@ -51,8 +51,11 @@ pipeline {
 
         // cleanWs()
             steps {
+                if(envr == "sbx"){
                 load "./sbx.env.sh"
                 echo "${env.SCM_OWNER}"
+                echo "${env.SCM_URL}"
+                }
 
                 dir(GIT_REPO) {
                     checkout([$class: 'GitSCM', 
