@@ -13,7 +13,7 @@
     </scm>
     <distributionManagement>
         <repository>
-            <id>github</id>
+            <id>github.com</id>
             <name>GitHub OWNER Apache Maven Packages</name>
             <url>${env.MVN_URL}</url>
         </repository>
