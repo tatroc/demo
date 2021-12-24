@@ -38,6 +38,7 @@ pipeline {
                     userRemoteConfigs: [[credentialsId: 'tatroc_gh', url: 'https://github.com/tatroc/demo.git']]])
 
                 sh '''
+                ls -la
                 git branch
                 pwd
                 '''
