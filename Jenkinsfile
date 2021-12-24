@@ -44,22 +44,7 @@ pipeline {
                 dir(GIT_REPO) {
                     sh '''
                     #!/bin/bash
-                    mkdir -p ~/.m2
-                    #ls -la ~
-                    cp ./mvn-settings.xml ~/.m2/settings.xml
-                    #env
-                    #cat ~/.m2/settings.xml
-                    #cat /etc/os-release
-                    #id
-                    dpkg -s maven || EXIT_CODE=$?
-                    if [ $EXIT_CODE -eq 1 ]; then
-                        apt update
-                        apt install -y maven
-                    fi
-
-                    mvn -v
-                    #git log --pretty="%D %H" --decorate=short --decorate-refs=refs/tags
-                    #git branch
+                    ./prepare.sh
                     '''
                 }
             }
