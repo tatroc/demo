@@ -74,6 +74,7 @@ pipeline {
                 dir(GIT_REPO) {
                     sh '''
                     #!/bin/bash
+                    env
                     pwd
                     ./deploy.sh
                     '''
