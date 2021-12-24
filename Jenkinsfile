@@ -25,8 +25,6 @@ pipeline {
           git log --pretty="%D %H" --decorate=short --decorate-refs=refs/tags
           git branch
           '''
-
-
       }
     }
 
@@ -47,7 +45,9 @@ pipeline {
           ls -la
           git log --pretty="%D %H" --decorate=short --decorate-refs=refs/tags
           '''
+        }
     }
+
 
   }
 }
