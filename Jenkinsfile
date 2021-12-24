@@ -109,21 +109,23 @@ environment {
                 script {
                     load "./${envr}.env.sh"
                 }
-                environment {
-                    GITHUB_CREDS = credentials("${GIT_CRED_ID}")
-                    GITHUB_USERNAME = "$GITHUB_CREDS_USR"
-                    GITHUB_PASSWORD = "$GITHUB_CREDS_PSW"
-                    MVN_URL = "${MVN_URL}"
-                    SCM_URL = "${SCM_URL}"
-                }
-
+                // environment {
+                //     GITHUB_CREDS = credentials("${GIT_CRED_ID}")
+                //     GITHUB_USERNAME = "$GITHUB_CREDS_USR"
+                //     GITHUB_PASSWORD = "$GITHUB_CREDS_PSW"
+                //     MVN_URL = "${MVN_URL}"
+                //     SCM_URL = "${SCM_URL}"
+                // }
                 dir("${SCM_REPO}") {
-                    sh '''
+                    sh """
                     #!/bin/bash
+                    echo ${envr}
+                    source ./${envr}.env.sh
                     env
+
                     pwd
                     ./deploy.sh
-                    '''
+                    """
                 }
             }
         }
