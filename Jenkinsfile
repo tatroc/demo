@@ -12,6 +12,7 @@ pipeline {
       steps {
           //assuming mvn-settings.xml is at root/current folder, otherwise provide absolute or relative path
           sh '''
+          #!/bin/bash
           mkdir -p ~/.m2
           #ls -la ~
           cp ./mvn-settings.xml ~/.m2/settings.xml
@@ -19,8 +20,14 @@ pipeline {
           #cat ~/.m2/settings.xml
           #cat /etc/os-release
           #id
-          apt update
-          apt install -y maven
+          dpkg -s maven1
+          if [ $? -eq 0 ]; then
+            echo success
+          else
+            apt update
+            apt install -y maven
+          fi
+
           mvn -v
           #git log --pretty="%D %H" --decorate=short --decorate-refs=refs/tags
           #git branch
