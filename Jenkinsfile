@@ -41,12 +41,12 @@ pipeline {
 //             echo "something"
 //         } 
 //     }
-load "./sbx.env.sh"
-echo "${env.SCM_OWNER}"
+
 
   agent { label 'cloudops-dev' }
   stages {
-
+        load "./sbx.env.sh"
+        echo "${env.SCM_OWNER}"
 
         stage ('Checkout') {
         // cleanWs()
