@@ -31,14 +31,18 @@ pipeline {
     stage ('Checkout') {
        // cleanWs()
        steps {
-        checkout([$class: 'GitSCM', 
-            branches: [[name: '*/dev']], 
-            userRemoteConfigs: [[credentialsId: 'tatroc_gh', url: 'https://github.com/tatroc/demo.git']]])
 
-        sh '''
-          git branch
-          pwd
-          '''
+            dir('demo') {
+                checkout([$class: 'GitSCM', 
+                    branches: [[name: '*/dev']], 
+                    userRemoteConfigs: [[credentialsId: 'tatroc_gh', url: 'https://github.com/tatroc/demo.git']]])
+
+                sh '''
+                git branch
+                pwd
+                '''
+            }
+
        }
     }
 
