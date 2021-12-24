@@ -1,5 +1,5 @@
 
-// def envr = "sbx"
+def envr = "sbx"
 
 // if (envr == 'sbx') {
 //     def SCM_REPO="demo"
@@ -25,17 +25,25 @@
 pipeline {
   //triggers{pollSCM('*/1 * * * *')}
   agent { label 'cloudops-dev' }
-  environment {
-    GITHUB_CREDS = credentials("${GIT_CRED_ID}")
-    GITHUB_USERNAME = "$GITHUB_CREDS_USR"
-    GITHUB_PASSWORD = "$GITHUB_CREDS_PSW"
-    DEBIAN_FRONTEND = "noninteractive"
-    GIT_AUTHOR_NAME = "jenkins"
-    GIT_AUTHOR_EMAIL = "tss-devops@kaplan.com"
-    GIT_COMMITTER_NAME = "$GIT_AUTHOR_NAME"
-    MVN_URL = "$MVN_URL"
-    SCM_URL = "$SCM_URL"
+  if (envr == 'sbx') {
+
+    environment {
+        GITHUB_CREDS = credentials("${GIT_CRED_ID}")
+        GITHUB_USERNAME = "$GITHUB_CREDS_USR"
+        GITHUB_PASSWORD = "$GITHUB_CREDS_PSW"
+        DEBIAN_FRONTEND = "noninteractive"
+        GIT_AUTHOR_NAME = "jenkins"
+        GIT_AUTHOR_EMAIL = "tss-devops@kaplan.com"
+        GIT_COMMITTER_NAME = "$GIT_AUTHOR_NAME"
+        MVN_URL = "$MVN_URL"
+        SCM_URL = "$SCM_URL"
+    }
+    
+  } else {
+     echo 'I execute elsewhere'
   }
+
+
   stages {
 
         stage ('Checkout') {
