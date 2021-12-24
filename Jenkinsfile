@@ -1,6 +1,7 @@
 def GIT_REPO="demo"
 def GIT_URL="https://github.com/tatroc/${GIT_REPO}.git"
 def GIT_CRED_ID="tatroc_gh"
+def GIT_BRANCH="dev"
 
 pipeline {
   agent { label 'cloudops-dev' }
@@ -12,69 +13,67 @@ pipeline {
   }
   stages {
 
+        stage ('Checkout') {
+        // cleanWs()
+            steps {
+                dir(GIT_REPO) {
+                    checkout([$class: 'GitSCM', 
+                        branches: [[name: '*/dev']], 
+                        extensions: [[$class: 'LocalBranch', localBranch: "**"]],
+                        submoduleCfg: [],
+                        userRemoteConfigs: [[credentialsId: GIT_CRED_ID, url: GIT_URL]]])
 
-    stage ('Checkout') {
-       // cleanWs()
-       steps {
-
-            dir(GIT_REPO) {
-                checkout([$class: 'GitSCM', 
-                    branches: [[name: '*/dev']], 
-                    extensions: [[$class: 'LocalBranch', localBranch: "**"]],
-                    submoduleCfg: [],
-                    userRemoteConfigs: [[credentialsId: GIT_CRED_ID, url: GIT_URL]]])
-
-                sh '''
-                ls -la
-                git branch
-                pwd
-                '''
+                    sh '''
+                    ls -la
+                    git branch
+                    pwd
+                    '''
+                }
             }
+        }
 
-       }
-    }
+        stage('Prepare') {
+            steps {
+                //assuming mvn-settings.xml is at root/current folder, otherwise provide absolute or relative path
+                dir(GIT_REPO) {
+                    sh '''
+                    #!/bin/bash
+                    mkdir -p ~/.m2
+                    #ls -la ~
+                    cp ./mvn-settings.xml ~/.m2/settings.xml
+                    #env
+                    #cat ~/.m2/settings.xml
+                    #cat /etc/os-release
+                    #id
+                    dpkg -s maven || EXIT_CODE=$?
+                    if [ $EXIT_CODE -eq 1 ]; then
+                        apt update
+                        apt install -y maven
+                    fi
 
-    stage('Prepare') {
-      steps {
-          //assuming mvn-settings.xml is at root/current folder, otherwise provide absolute or relative path
-          dir(GIT_REPO) {
-            sh '''
-            #!/bin/bash
-            mkdir -p ~/.m2
-            #ls -la ~
-            cp ./mvn-settings.xml ~/.m2/settings.xml
-            #env
-            #cat ~/.m2/settings.xml
-            #cat /etc/os-release
-            #id
-            dpkg -s maven || EXIT_CODE=$?
-            if [ $EXIT_CODE -eq 1 ]; then
-                apt update
-                apt install -y maven
-            fi
-
-            mvn -v
-            #git log --pretty="%D %H" --decorate=short --decorate-refs=refs/tags
-            #git branch
-            '''
-          }
-      }
-    }
-
-
-
-
-    stage ('Build') {
-       // cleanWs()
-       steps {
-            dir(GIT_REPO) {
-                sh '''
-                
-                pwd
-                '''
+                    mvn -v
+                    #git log --pretty="%D %H" --decorate=short --decorate-refs=refs/tags
+                    #git branch
+                    '''
+                }
             }
-       }
-    }
+        }
+
+
+
+
+        stage ('Build') {
+        // cleanWs()
+            steps {
+                dir(GIT_REPO) {
+                    sh '''
+                    #!/bin/bash
+                    pwd
+                    ./deploy.sh
+                    '''
+                }
+            }
+        }
 
 
   }
