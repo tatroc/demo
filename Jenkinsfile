@@ -55,7 +55,7 @@ pipeline {
 
                         load "./${envr}.env.sh"
                         echo "${SCM_OWNER}"
-                        echo "${env.SCM_URL}"
+                        echo "${SCM_URL}"
 
                 }
 
