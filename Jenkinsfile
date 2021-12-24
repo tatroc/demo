@@ -8,10 +8,11 @@ pipeline {
   }
   stages {
 
-    stage('Build') {
+    stage('Prepare') {
       steps {
           //assuming mvn-settings.xml is at root/current folder, otherwise provide absolute or relative path
-          sh '''mkdir -p ~/.m2
+          sh '''
+          mkdir -p ~/.m2
           ls -la ~
           cp ./mvn-settings.xml ~/.m2/settings.xml
           env
@@ -29,5 +30,50 @@ pipeline {
       }
     }
 
+    stage ('Checkout') {
+       // cleanWs()
+       steps {
+        checkout([$class: 'GitSCM', 
+            branches: [[name: '*/dev']], 
+            userRemoteConfigs: [[credentialsId: 'tatro_gh', url: 'https://github.com/tatroc/demo.git']],
+       }
+    }
+
+
+    stage ('Build') {
+       // cleanWs()
+       steps {
+         sh '''
+          ls -la
+          git log --pretty="%D %H" --decorate=short --decorate-refs=refs/tags
+          '''
+    }
+
   }
 }
+
+
+
+
+    // stage ('Checkout') {
+    //    // cleanWs()
+    //    steps {
+    //     checkout([$class: 'SubversionSCM', 
+    //     additionalCredentials: [], 
+    //     excludedCommitMessages: '', 
+    //     excludedRegions: '', 
+    //     excludedRevprop: '', 
+    //     excludedUsers: '', 
+    //     filterChangelog: false, 
+    //     ignoreDirPropChanges: false, 
+    //     includedRegions: '', 
+    //     locations: [[cancelProcessOnExternalsFail: true, 
+    //     credentialsId: '234243-45654-234randomstuff', 
+    //     depthOption: 'infinity', 
+    //     ignoreExternalsOption: true, 
+    //     local: '.', 
+    //     remote: 'https://starkindustries/ironman/superGlueForThanosFingers/repo']],
+    //     quietOperation: true, 
+    //     workspaceUpdater: [$class: 'UpdateUpdater']])
+    //    }
+    // }
