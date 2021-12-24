@@ -39,7 +39,7 @@ done
 
 cat "${WORK_DIR}/${COMMITTED_UNTAGGED_FILES}"
 
-DIRECTORY_LIST=($(cat ${WORK_DIR}/${COMMITTED_UNTAGGED_FILES} | grep -v -E "*.xml" | grep '/' | awk -F '/' '{ print $1 }' | sort -u))
+DIRECTORY_LIST=($(cat ${WORK_DIR}/${COMMITTED_UNTAGGED_FILES} | egrep -v "*.xml|^\." | grep '/' | awk -F '/' '{ print $1 }' | sort -u))
 declare -p DIRECTORY_LIST
 
 if [ -z "$DIRECTORY_LIST" ]
@@ -55,12 +55,14 @@ echo "Working with directories ${DIRECTORY_LIST[@]}"
 
 for dir in "${DIRECTORY_LIST[@]}"
 do
-    echo "item"
-    echo "${dir}"
+    echo "TF Module Directory: ${dir}"
+
 done
 
 
 echo "Working with TF module directories ${DIRECTORY_LIST[@]}"
+
+
 
 echo $WORK_DIR
 }
@@ -68,4 +70,3 @@ echo $WORK_DIR
 getmoduledirectories $HASH_FILE $ALL_COMMIT_HASH_FILE $COMMITTED_UNTAGGED_FILES
 
 source ./env.vars
-env
