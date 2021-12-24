@@ -1,7 +1,8 @@
 def GIT_REPO="demo"
-def GIT_URL="https://github.com/tatroc/${GIT_REPO}.git"
+def SCM_URL="https://github.com/tatroc/${GIT_REPO}.git"
 def GIT_CRED_ID="tatroc_gh"
 def GIT_BRANCH="dev"
+def MVN_URL="https://maven.pkg.github.com/tatroc/demo"
 
 pipeline {
   //triggers{pollSCM('*/1 * * * *')}
@@ -13,6 +14,8 @@ pipeline {
     DEBIAN_FRONTEND = "noninteractive"
     GIT_AUTHOR_NAME = "jenkins"
     GIT_COMMITTER_NAME = "$GIT_AUTHOR_NAME"
+    MVN_URL = "$MVN_URL"
+    SCM_URL = "$SCM_URL"
   }
   stages {
 
@@ -24,7 +27,7 @@ pipeline {
                         branches: [[name: "*/${GIT_BRANCH}"]], 
                         extensions: [[$class: 'LocalBranch', localBranch: "**"]],
                         submoduleCfg: [],
-                        userRemoteConfigs: [[credentialsId: GIT_CRED_ID, url: GIT_URL]]])
+                        userRemoteConfigs: [[credentialsId: GIT_CRED_ID, url: SCM_URL]]])
 
                     sh '''
                     ls -la
