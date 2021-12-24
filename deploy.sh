@@ -73,7 +73,7 @@ done
 
 cat "${WORK_DIR}/${COMMITTED_UNTAGGED_FILES}"
 
-DIRECTORY_LIST=($(cat ${WORK_DIR}/${COMMITTED_UNTAGGED_FILES} | grep -v -E "*.xml" | grep '/' | awk -F '/' '{ print $1 }' | sort -u))
+DIRECTORY_LIST=($(cat ${WORK_DIR}/${COMMITTED_UNTAGGED_FILES} | egrep -v "*.xml|^\." | grep '/' | awk -F '/' '{ print $1 }' | sort -u))
 declare -p DIRECTORY_LIST
 
 
