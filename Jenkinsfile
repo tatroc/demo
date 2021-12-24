@@ -45,10 +45,11 @@ pipeline {
 
   agent { label 'cloudops-dev' }
   stages {
-        load "./sbx.env.sh"
-        echo "${env.SCM_OWNER}"
+
 
         stage ('Checkout') {
+                    load "./sbx.env.sh"
+        echo "${env.SCM_OWNER}"
         // cleanWs()
             steps {
                 dir(GIT_REPO) {
