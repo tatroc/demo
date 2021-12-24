@@ -48,10 +48,12 @@ pipeline {
 
 
         stage ('Checkout') {
-                    load "./sbx.env.sh"
-        echo "${env.SCM_OWNER}"
+
         // cleanWs()
             steps {
+                load "./sbx.env.sh"
+                echo "${env.SCM_OWNER}"
+
                 dir(GIT_REPO) {
                     checkout([$class: 'GitSCM', 
                         branches: [[name: "*/${GIT_BRANCH}"]], 
