@@ -4,7 +4,7 @@ ALL_COMMIT_HASH_FILE="all_commit_hashes.txt"
 COMMITTED_UNTAGGED_FILES="committed_untagged_files.txt"
 
 export SCM_URL=https://github.com/tatroc/demo.git
-
+export MVN_URL_REPO=https://maven.pkg.github.com/tatroc/demo
 
 function getmoduledirectories {
 

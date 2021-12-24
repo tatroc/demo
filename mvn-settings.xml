@@ -17,7 +17,7 @@
         </repository>
         <repository>
           <id>github.com</id>
-          <url>https://maven.pkg.github.com/tatroc/demo</url>
+          <url>${env.MVN_URL_REPO}</url>
           <snapshots>
             <enabled>true</enabled>
           </snapshots>
