@@ -15,13 +15,14 @@ pipeline {
           ls -la ~
           cp ./mvn-settings.xml ~/.m2/settings.xml
           env
-          cat ~/.m2/settings.xml
-          cat /etc/os-release
-          id
+          #cat ~/.m2/settings.xml
+          #cat /etc/os-release
+          #id
           apt update
           apt install -y maven
           mvn -v
-
+          git log --pretty="%D %H" --decorate=short --decorate-refs=refs/tags
+          git branch
           '''
 
 
