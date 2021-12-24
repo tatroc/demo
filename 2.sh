@@ -66,3 +66,6 @@ echo $WORK_DIR
 }
 
 getmoduledirectories $HASH_FILE $ALL_COMMIT_HASH_FILE $COMMITTED_UNTAGGED_FILES
+
+source ./env.vars
+env

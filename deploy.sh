@@ -4,7 +4,23 @@ ALL_COMMIT_HASH_FILE="all_commit_hashes.txt"
 COMMITTED_UNTAGGED_FILES="committed_untagged_files.txt"
 
 export SCM_URL=https://github.com/tatroc/demo.git
-export MVN_URL_REPO=https://maven.pkg.github.com/tatroc/demo
+export MVN_URL=https://maven.pkg.github.com/tatroc/demo
+
+
+
+if [[ -z "${SCM_URL}" ]]; then
+  echo "environment variable \$SCM_URL not set"
+  echo "run source ./env.vars"
+fi
+
+if [[ -z "${MVN_URL}" ]]; then
+  echo "environment variable \$MVN_URL not set"
+  echo "run source ./env.vars"
+fi
+
+
+
+
 
 function getmoduledirectories {
 

@@ -17,7 +17,7 @@
         </repository>
         <repository>
           <id>github.com</id>
-          <url>${env.MVN_URL_REPO}</url>
+          <url>${env.MVN_URL}</url>
           <snapshots>
             <enabled>true</enabled>
           </snapshots>
