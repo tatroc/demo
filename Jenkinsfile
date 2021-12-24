@@ -20,10 +20,8 @@ pipeline {
           #cat ~/.m2/settings.xml
           #cat /etc/os-release
           #id
-          dpkg -s maven1
-          if [ $? -eq 0 ]; then
-            echo success
-          else
+          dpkg -s maven || EXIT_CODE=$?
+          if [ $EXIT_CODE -eq 1 ]; then
             apt update
             apt install -y maven
           fi
