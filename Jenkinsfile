@@ -52,19 +52,19 @@ pipeline {
         // cleanWs()
             steps {
                 script {
-                    if(envr == "sbx"){
-                        load "./sbx.env.sh"
+
+                        load "./${envr}.env.sh"
                         echo "${env.SCM_OWNER}"
                         echo "${env.SCM_URL}"
-                    }
+
                 }
 
-                dir(GIT_REPO) {
+                dir("${env.SCM_REPO}") {
                     checkout([$class: 'GitSCM', 
-                        branches: [[name: "*/${GIT_BRANCH}"]], 
+                        branches: [[name: "*/${env.GIT_BRANCH}"]], 
                         extensions: [[$class: 'LocalBranch', localBranch: "**"]],
                         submoduleCfg: [],
-                        userRemoteConfigs: [[credentialsId: GIT_CRED_ID, url: SCM_URL]]])
+                        userRemoteConfigs: [[credentialsId: "${env.GIT_CRED_ID}", url: "${env.SCM_URL}"]]])
 
                     sh '''
                     ls -la
