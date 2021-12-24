@@ -5,7 +5,7 @@ def GIT_CRED_ID="tatroc_gh"
 pipeline {
   agent { label 'cloudops-dev' }
   environment {
-    GITHUB_CREDS = credentials(GIT_CRED_ID)
+    GITHUB_CREDS = credentials("${GIT_CRED_ID}")
     GITHUB_USERNAME = "$GITHUB_CREDS_USR"
     GITHUB_PASSWORD = "$GITHUB_CREDS_PSW"
     DEBIAN_FRONTEND = "noninteractive"
