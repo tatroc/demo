@@ -4,12 +4,15 @@ def GIT_CRED_ID="tatroc_gh"
 def GIT_BRANCH="dev"
 
 pipeline {
+  //triggers{pollSCM('*/1 * * * *')}
   agent { label 'cloudops-dev' }
   environment {
     GITHUB_CREDS = credentials("${GIT_CRED_ID}")
     GITHUB_USERNAME = "$GITHUB_CREDS_USR"
     GITHUB_PASSWORD = "$GITHUB_CREDS_PSW"
     DEBIAN_FRONTEND = "noninteractive"
+    GIT_AUTHOR_NAME = "jenkins"
+    GIT_COMMITTER_NAME = "$GIT_AUTHOR_NAME"
   }
   stages {
 
@@ -18,7 +21,7 @@ pipeline {
             steps {
                 dir(GIT_REPO) {
                     checkout([$class: 'GitSCM', 
-                        branches: [[name: '*/dev']], 
+                        branches: [[name: "*/${GIT_BRANCH}"]], 
                         extensions: [[$class: 'LocalBranch', localBranch: "**"]],
                         submoduleCfg: [],
                         userRemoteConfigs: [[credentialsId: GIT_CRED_ID, url: GIT_URL]]])
