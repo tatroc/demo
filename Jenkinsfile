@@ -12,6 +12,28 @@ pipeline {
   }
   stages {
 
+
+    stage ('Checkout') {
+       // cleanWs()
+       steps {
+
+            dir('demo') {
+                checkout([$class: 'GitSCM', 
+                    branches: [[name: '*/dev']], 
+                    extensions: [[$class: 'LocalBranch', localBranch: "**"]],
+                    submoduleCfg: [],
+                    userRemoteConfigs: [[credentialsId: GIT_CRED_ID, url: 'https://github.com/tatroc/demo.git']]])
+
+                sh '''
+                ls -la
+                git branch
+                pwd
+                '''
+            }
+
+       }
+    }
+
     stage('Prepare') {
       steps {
           //assuming mvn-settings.xml is at root/current folder, otherwise provide absolute or relative path
@@ -39,26 +61,7 @@ pipeline {
       }
     }
 
-    stage ('Checkout') {
-       // cleanWs()
-       steps {
 
-            dir('demo') {
-                checkout([$class: 'GitSCM', 
-                    branches: [[name: '*/dev']], 
-                    extensions: [[$class: 'LocalBranch', localBranch: "**"]],
-                    submoduleCfg: [],
-                    userRemoteConfigs: [[credentialsId: GIT_CRED_ID, url: 'https://github.com/tatroc/demo.git']]])
-
-                sh '''
-                ls -la
-                git branch
-                pwd
-                '''
-            }
-
-       }
-    }
 
 
     stage ('Build') {
