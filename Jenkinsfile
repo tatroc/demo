@@ -42,6 +42,8 @@ pipeline {
             dir('demo') {
                 checkout([$class: 'GitSCM', 
                     branches: [[name: '*/dev']], 
+                    extensions: [[$class: 'LocalBranch', localBranch: "**"]],
+                    submoduleCfg: [],
                     userRemoteConfigs: [[credentialsId: 'tatroc_gh', url: 'https://github.com/tatroc/demo.git']]])
 
                 sh '''
