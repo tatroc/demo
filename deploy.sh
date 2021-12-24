@@ -3,6 +3,9 @@ HASH_FILE="commit_hashes.txt"
 ALL_COMMIT_HASH_FILE="all_commit_hashes.txt"
 COMMITTED_UNTAGGED_FILES="committed_untagged_files.txt"
 
+export SCM_URL=https://github.com/tatroc/demo.git
+
+
 function getmoduledirectories {
 
 WORK_DIR=$(mktemp -d -p "/tmp")

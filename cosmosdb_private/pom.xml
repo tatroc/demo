@@ -7,8 +7,8 @@
 
 
     <scm>
-        <connection>scm:git:https://github.com/tatroc/demo.git</connection>
-        <developerConnection>scm:git:https://github.com/tatroc/demo.git</developerConnection>
+        <connection>scm:git:${env.SCM_URL}</connection>
+        <developerConnection>scm:git:${env.SCM_URL}</developerConnection>
   
     <tag>HEAD</tag>
   </scm>

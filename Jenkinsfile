@@ -80,27 +80,3 @@ pipeline {
 }
 
 
-
-
-    // stage ('Checkout') {
-    //    // cleanWs()
-    //    steps {
-    //     checkout([$class: 'SubversionSCM', 
-    //     additionalCredentials: [], 
-    //     excludedCommitMessages: '', 
-    //     excludedRegions: '', 
-    //     excludedRevprop: '', 
-    //     excludedUsers: '', 
-    //     filterChangelog: false, 
-    //     ignoreDirPropChanges: false, 
-    //     includedRegions: '', 
-    //     locations: [[cancelProcessOnExternalsFail: true, 
-    //     credentialsId: '234243-45654-234randomstuff', 
-    //     depthOption: 'infinity', 
-    //     ignoreExternalsOption: true, 
-    //     local: '.', 
-    //     remote: 'https://starkindustries/ironman/superGlueForThanosFingers/repo']],
-    //     quietOperation: true, 
-    //     workspaceUpdater: [$class: 'UpdateUpdater']])
-    //    }
-    // }
