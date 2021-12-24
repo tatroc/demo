@@ -33,7 +33,7 @@ pipeline {
        steps {
         checkout([$class: 'GitSCM', 
             branches: [[name: '*/dev']], 
-            userRemoteConfigs: [[credentialsId: 'tatro_gh', url: 'https://github.com/tatroc/demo.git']]])
+            userRemoteConfigs: [[credentialsId: 'tatroc_gh', url: 'https://github.com/tatroc/demo.git']]])
        }
     }
 
