@@ -1,11 +1,11 @@
-def GIT_REPO="foo"
-def GIT_URL=""
+def GIT_REPO="demo"
+def GIT_URL="https://github.com/tatroc/${GIT_REPO}.git"
 def GIT_CRED_ID="tatroc_gh"
 
 pipeline {
   agent { label 'cloudops-dev' }
   environment {
-    GITHUB_CREDS = credentials('tatroc_gh')
+    GITHUB_CREDS = credentials(GIT_CRED_ID)
     GITHUB_USERNAME = "$GITHUB_CREDS_USR"
     GITHUB_PASSWORD = "$GITHUB_CREDS_PSW"
     DEBIAN_FRONTEND = "noninteractive"
@@ -17,12 +17,12 @@ pipeline {
        // cleanWs()
        steps {
 
-            dir('demo') {
+            dir(GIT_REPO) {
                 checkout([$class: 'GitSCM', 
                     branches: [[name: '*/dev']], 
                     extensions: [[$class: 'LocalBranch', localBranch: "**"]],
                     submoduleCfg: [],
-                    userRemoteConfigs: [[credentialsId: GIT_CRED_ID, url: 'https://github.com/tatroc/demo.git']]])
+                    userRemoteConfigs: [[credentialsId: GIT_CRED_ID, url: GIT_URL]]])
 
                 sh '''
                 ls -la
@@ -37,7 +37,7 @@ pipeline {
     stage('Prepare') {
       steps {
           //assuming mvn-settings.xml is at root/current folder, otherwise provide absolute or relative path
-          dir('demo') {
+          dir(GIT_REPO) {
             sh '''
             #!/bin/bash
             mkdir -p ~/.m2
@@ -67,12 +67,12 @@ pipeline {
     stage ('Build') {
        // cleanWs()
        steps {
-         dir('demo') {
-         sh '''
-        
-          pwd
-          '''
-        }
+            dir(GIT_REPO) {
+                sh '''
+                
+                pwd
+                '''
+            }
        }
     }
 
