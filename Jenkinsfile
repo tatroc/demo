@@ -24,11 +24,8 @@ def envr = "sbx"
 
 pipeline {
   //triggers{pollSCM('*/1 * * * *')}
-  agent { label 'cloudops-dev' }
-  stages {
-    if (envr == 'sbx') {
 
-    environment {
+environment {
         GITHUB_CREDS = credentials("${GIT_CRED_ID}")
         GITHUB_USERNAME = "$GITHUB_CREDS_USR"
         GITHUB_PASSWORD = "$GITHUB_CREDS_PSW"
@@ -40,9 +37,14 @@ pipeline {
         SCM_URL = "$SCM_URL"
     }
     
-  } else {
-     echo 'I execute elsewhere'
-  }
+    if ('1' == '1') {
+        echo "something"
+    } 
+
+
+
+  agent { label 'cloudops-dev' }
+  stages {
 
 
         stage ('Checkout') {
