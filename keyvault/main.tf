@@ -1,3 +1,4 @@
+# My comment 12
 locals {
   rg_name = var.rg_name == null ? format("rg-%s-%s", var.kv_name, terraform.workspace) : var.rg_name
 }
