@@ -1,4 +1,4 @@
-# My comment 18
+# My comment 19
 locals {
   tags            = merge(var.tags, {"PROVISIONED_BY" = "KNA CloudOps Terraform", "CONTACT" = "tss-devops@kaplan.com"})
   subnet_id       = var.subnet_id

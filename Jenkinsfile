@@ -1,7 +1,17 @@
 
-def envr = "sbx"
+// def envr = "sbx"
 
-if (envr == 'sbx') {
+// if (envr == 'sbx') {
+//     def SCM_REPO="demo"
+//     def SCM_OWNER="tatroc"
+//     def GIT_REPO="demo"
+//     def SCM_URL="https://github.com/tatroc/${GIT_REPO}.git"
+//     def GIT_CRED_ID="tatroc_gh"
+//     def GIT_BRANCH="dev"
+//     def MVN_URL="https://maven.pkg.github.com/tatroc/demo"
+// } else {
+//     echo 'I execute elsewhere'
+// }
     def SCM_REPO="demo"
     def SCM_OWNER="tatroc"
     def GIT_REPO="demo"
@@ -9,10 +19,6 @@ if (envr == 'sbx') {
     def GIT_CRED_ID="tatroc_gh"
     def GIT_BRANCH="dev"
     def MVN_URL="https://maven.pkg.github.com/tatroc/demo"
-} else {
-    echo 'I execute elsewhere'
-}
-
 
 
 
