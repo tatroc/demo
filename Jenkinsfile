@@ -25,23 +25,24 @@ def envr = "sbx"
 pipeline {
   //triggers{pollSCM('*/1 * * * *')}
 
-environment {
-        GITHUB_CREDS = credentials("${GIT_CRED_ID}")
-        GITHUB_USERNAME = "$GITHUB_CREDS_USR"
-        GITHUB_PASSWORD = "$GITHUB_CREDS_PSW"
-        DEBIAN_FRONTEND = "noninteractive"
-        GIT_AUTHOR_NAME = "jenkins"
-        GIT_AUTHOR_EMAIL = "tss-devops@kaplan.com"
-        GIT_COMMITTER_NAME = "$GIT_AUTHOR_NAME"
-        MVN_URL = "$MVN_URL"
-        SCM_URL = "$SCM_URL"
-    }
-    script {
-        if ('1' == '1') {
-            echo "something"
-        } 
-    }
-
+// environment {
+//         GITHUB_CREDS = credentials("${GIT_CRED_ID}")
+//         GITHUB_USERNAME = "$GITHUB_CREDS_USR"
+//         GITHUB_PASSWORD = "$GITHUB_CREDS_PSW"
+//         DEBIAN_FRONTEND = "noninteractive"
+//         GIT_AUTHOR_NAME = "jenkins"
+//         GIT_AUTHOR_EMAIL = "tss-devops@kaplan.com"
+//         GIT_COMMITTER_NAME = "$GIT_AUTHOR_NAME"
+//         MVN_URL = "$MVN_URL"
+//         SCM_URL = "$SCM_URL"
+//     }
+//     script {
+//         if ('1' == '1') {
+//             echo "something"
+//         } 
+//     }
+load "./sbx.env.sh"
+echo "${env.SCM_OWNER}"
 
   agent { label 'cloudops-dev' }
   stages {
