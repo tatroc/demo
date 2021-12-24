@@ -13,17 +13,17 @@ pipeline {
           //assuming mvn-settings.xml is at root/current folder, otherwise provide absolute or relative path
           sh '''
           mkdir -p ~/.m2
-          ls -la ~
+          #ls -la ~
           cp ./mvn-settings.xml ~/.m2/settings.xml
-          env
+          #env
           #cat ~/.m2/settings.xml
           #cat /etc/os-release
           #id
           apt update
           apt install -y maven
           mvn -v
-          git log --pretty="%D %H" --decorate=short --decorate-refs=refs/tags
-          git branch
+          #git log --pretty="%D %H" --decorate=short --decorate-refs=refs/tags
+          #git branch
           '''
       }
     }
@@ -51,12 +51,13 @@ pipeline {
     stage ('Build') {
        // cleanWs()
        steps {
+         dir('demo') {
          sh '''
-          ls -la
-          git log --pretty="%D %H" --decorate=short --decorate-refs=refs/tags
+        
           pwd
           '''
         }
+       }
     }
 
 
