@@ -54,24 +54,24 @@ pipeline {
                 script {
 
                         load "./${envr}.env.sh"
-                        echo "${env.SCM_OWNER}"
+                        echo "${SCM_OWNER}"
                         echo "${env.SCM_URL}"
 
                 }
 
-                // dir("${env.SCM_REPO}") {
-                //     checkout([$class: 'GitSCM', 
-                //         branches: [[name: "*/${env.GIT_BRANCH}"]], 
-                //         extensions: [[$class: 'LocalBranch', localBranch: "**"]],
-                //         submoduleCfg: [],
-                //         userRemoteConfigs: [[credentialsId: "${env.GIT_CRED_ID}", url: "${env.SCM_URL}"]]])
+                dir("${SCM_REPO}") {
+                    checkout([$class: 'GitSCM', 
+                        branches: [[name: "*/${GIT_BRANCH}"]], 
+                        extensions: [[$class: 'LocalBranch', localBranch: "**"]],
+                        submoduleCfg: [],
+                        userRemoteConfigs: [[credentialsId: "${GIT_CRED_ID}", url: "${SCM_URL}"]]])
 
-                //     sh '''
-                //     ls -la
-                //     git branch
-                //     pwd
-                //     '''
-                // }
+                    sh '''
+                    ls -la
+                    git branch
+                    pwd
+                    '''
+                }
             }
         }
 
