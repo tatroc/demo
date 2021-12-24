@@ -36,11 +36,11 @@ environment {
         MVN_URL = "$MVN_URL"
         SCM_URL = "$SCM_URL"
     }
-    
-    if ('1' == '1') {
-        echo "something"
-    } 
-
+    script {
+        if ('1' == '1') {
+            echo "something"
+        } 
+    }
 
 
   agent { label 'cloudops-dev' }
