@@ -1,7 +1,6 @@
 #!/bin/bash
 HASH_FILE="commit_hashes.txt"
 ALL_COMMIT_HASH_FILE="all_commit_hashes.txt"
-
 COMMITTED_UNTAGGED_FILES="committed_untagged_files.txt"
 
 function getmoduledirectories {
@@ -15,15 +14,12 @@ fi
 git log --pretty="%D %H" --decorate=short --decorate-refs=refs/tags > "${WORK_DIR}/${ALL_COMMIT_HASH_FILE}"
 
 exec 4<"${WORK_DIR}/${ALL_COMMIT_HASH_FILE}"
-echo Start
 while read -u4 line ; do
-    echo "$line"
-
     if [[ "$line" != *"tag"* ]]; then
-        echo "No tag found in commit $line"
+        echo "No tag found in commit: $line"
         echo $line >> "${WORK_DIR}/${HASH_FILE}"
     else
-        echo "Tag found in commit $line"
+        echo "Tag found in commit: $line"
         break
     fi
 done
@@ -31,7 +27,6 @@ done
 cat "${WORK_DIR}/${HASH_FILE}"
 
 exec 4<"${WORK_DIR}/${HASH_FILE}"
-echo Start
 while read -u4 line ; do
     echo "$line"
 
@@ -43,6 +38,10 @@ cat "${WORK_DIR}/${COMMITTED_UNTAGGED_FILES}"
 DIRECTORY_LIST=($(cat ${WORK_DIR}/${COMMITTED_UNTAGGED_FILES} | grep -v -E "*.xml" | grep '/' | awk -F '/' '{ print $1 }' | sort -u))
 declare -p DIRECTORY_LIST
 
+
+echo "Working with directories ${DIRECTORY_LIST[@]}"
+
+
 if [ -z "$DIRECTORY_LIST" ]
 then
     echo "No TF modules were modified"
@@ -51,7 +50,6 @@ then
 else
     echo "\$DIRECTORY_LIST is NOT empty"
 fi
-
 
 echo "Working with directories ${DIRECTORY_LIST[@]}"
 
