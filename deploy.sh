@@ -20,10 +20,10 @@ while read -u4 line ; do
     echo "$line"
 
     if [[ "$line" != *"tag"* ]]; then
-        echo "It's there. $line"
+        echo "No tag found in commit $line"
         echo $line >> "${WORK_DIR}/${HASH_FILE}"
     else
-        echo "tag found in line $line"
+        echo "Tag found in commit $line"
         break
     fi
 done
@@ -46,7 +46,7 @@ declare -p DIRECTORY_LIST
 if [ -z "$DIRECTORY_LIST" ]
 then
       echo "\$DIRECTORY_LIST is empty, nothing to do. Exiting"
-      exit 1
+      exit 0
 else
       echo "\$DIRECTORY_LIST is NOT empty"
 fi
@@ -56,8 +56,7 @@ echo "Working with directories ${DIRECTORY_LIST[@]}"
 
 for dir in "${DIRECTORY_LIST[@]}"
 do
-    echo "item"
-    echo "${dir}"
+    echo "Directory: ${dir}"
 done
 
 
@@ -83,13 +82,13 @@ fi
 
 
 
-if [ -z "$DIRECTORY_LIST" ]
-then
-      echo "var \$DIRECTORY_LIST is empty, exiting..."
-      exit 1
-else
-      echo "var \$DIRECTORY_LIST is NOT empty"
-fi
+# if [ -z "$DIRECTORY_LIST" ]
+# then
+#       echo "var \$DIRECTORY_LIST is empty, exiting..."
+#       exit 1
+# else
+#       echo "var \$DIRECTORY_LIST is NOT empty"
+# fi
 BASE_DIR=$(pwd)
 echo "Base directory ${BASE_DIR}"
 
