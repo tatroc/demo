@@ -51,10 +51,12 @@ pipeline {
 
         // cleanWs()
             steps {
-                if(envr == "sbx"){
-                load "./sbx.env.sh"
-                echo "${env.SCM_OWNER}"
-                echo "${env.SCM_URL}"
+                script {
+                    if(envr == "sbx"){
+                        load "./sbx.env.sh"
+                        echo "${env.SCM_OWNER}"
+                        echo "${env.SCM_URL}"
+                    }
                 }
 
                 dir(GIT_REPO) {
