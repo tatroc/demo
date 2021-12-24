@@ -25,7 +25,8 @@ def envr = "sbx"
 pipeline {
   //triggers{pollSCM('*/1 * * * *')}
   agent { label 'cloudops-dev' }
-  if (envr == 'sbx') {
+  stages {
+    if (envr == 'sbx') {
 
     environment {
         GITHUB_CREDS = credentials("${GIT_CRED_ID}")
@@ -43,8 +44,6 @@ pipeline {
      echo 'I execute elsewhere'
   }
 
-
-  stages {
 
         stage ('Checkout') {
         // cleanWs()
