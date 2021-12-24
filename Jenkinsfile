@@ -59,50 +59,50 @@ pipeline {
 
                 }
 
-                dir("${env.SCM_REPO}") {
-                    checkout([$class: 'GitSCM', 
-                        branches: [[name: "*/${env.GIT_BRANCH}"]], 
-                        extensions: [[$class: 'LocalBranch', localBranch: "**"]],
-                        submoduleCfg: [],
-                        userRemoteConfigs: [[credentialsId: "${env.GIT_CRED_ID}", url: "${env.SCM_URL}"]]])
+                // dir("${env.SCM_REPO}") {
+                //     checkout([$class: 'GitSCM', 
+                //         branches: [[name: "*/${env.GIT_BRANCH}"]], 
+                //         extensions: [[$class: 'LocalBranch', localBranch: "**"]],
+                //         submoduleCfg: [],
+                //         userRemoteConfigs: [[credentialsId: "${env.GIT_CRED_ID}", url: "${env.SCM_URL}"]]])
 
-                    sh '''
-                    ls -la
-                    git branch
-                    pwd
-                    '''
-                }
+                //     sh '''
+                //     ls -la
+                //     git branch
+                //     pwd
+                //     '''
+                // }
             }
         }
 
-        stage('Prepare') {
-            steps {
-                //assuming mvn-settings.xml is at root/current folder, otherwise provide absolute or relative path
-                dir(GIT_REPO) {
-                    sh '''
-                    #!/bin/bash
-                    ./prepare.sh
-                    '''
-                }
-            }
-        }
+        // stage('Prepare') {
+        //     steps {
+        //         //assuming mvn-settings.xml is at root/current folder, otherwise provide absolute or relative path
+        //         dir(GIT_REPO) {
+        //             sh '''
+        //             #!/bin/bash
+        //             ./prepare.sh
+        //             '''
+        //         }
+        //     }
+        // }
 
 
 
 
-        stage ('Build') {
-        // cleanWs()
-            steps {
-                dir(GIT_REPO) {
-                    sh '''
-                    #!/bin/bash
-                    env
-                    pwd
-                    ./deploy.sh
-                    '''
-                }
-            }
-        }
+        // stage ('Build') {
+        // // cleanWs()
+        //     steps {
+        //         dir(GIT_REPO) {
+        //             sh '''
+        //             #!/bin/bash
+        //             env
+        //             pwd
+        //             ./deploy.sh
+        //             '''
+        //         }
+        //     }
+        // }
 
 
   }
