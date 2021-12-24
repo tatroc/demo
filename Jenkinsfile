@@ -34,6 +34,11 @@ pipeline {
         checkout([$class: 'GitSCM', 
             branches: [[name: '*/dev']], 
             userRemoteConfigs: [[credentialsId: 'tatroc_gh', url: 'https://github.com/tatroc/demo.git']]])
+
+        sh '''
+          git branch
+          pwd
+          '''
        }
     }
 
@@ -44,6 +49,7 @@ pipeline {
          sh '''
           ls -la
           git log --pretty="%D %H" --decorate=short --decorate-refs=refs/tags
+          pwd
           '''
         }
     }
