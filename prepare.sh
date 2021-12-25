@@ -9,4 +9,5 @@ if [ $EXIT_CODE -eq 1 ]; then
     apt update
     apt install -y maven
 fi
+env
 mvn -v
