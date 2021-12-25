@@ -59,6 +59,7 @@ node('jenkinsAgent') {
       //  def dockerHome = tool 'MyDocker'
       //  def mavenHome  = tool 'MyMaven'
       //  env.PATH = "${dockerHome}/bin:${mavenHome}/bin:${env.PATH}"
+      println("My SCM: " + "${SCM_REPO2}")
         sh """
         echo "${SCM_REPO}"
         echo "${SCM_URL}"
