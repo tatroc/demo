@@ -67,29 +67,29 @@ if (envr == 'sbx') {
   //stages {
 
 
-        stage ('Checkout') {
+    stage ('Checkout') {
 
-        // cleanWs()
-           // steps {
-                // script {
-                    load "./${envr}.env.sh"
-                // }
+    // cleanWs()
+        // steps {
+            // script {
+        load "./${envr}.env.sh"
+            // }
 
-                dir("${SCM_REPO}") {
-                    checkout([$class: 'GitSCM', 
-                        branches: [[name: "*/${GIT_BRANCH}"]], 
-                        extensions: [[$class: 'LocalBranch', localBranch: "**"]],
-                        submoduleCfg: [],
-                        userRemoteConfigs: [[credentialsId: "${GIT_CRED_ID}", url: "${SCM_URL}"]]])
+        dir("${SCM_REPO}") {
+            checkout([$class: 'GitSCM', 
+                branches: [[name: "*/${GIT_BRANCH}"]], 
+                extensions: [[$class: 'LocalBranch', localBranch: "**"]],
+                submoduleCfg: [],
+                userRemoteConfigs: [[credentialsId: "${GIT_CRED_ID}", url: "${SCM_URL}"]]])
 
-                    sh '''
-                    ls -la
-                    git branch
-                    pwd
-                    '''
-                }
-           // }
-//        }
+            sh '''
+            ls -la
+            git branch
+            pwd
+            '''
+        }
+        // }
+    }
 
         stage('Prepare') {
          //   steps {
@@ -122,33 +122,33 @@ if (envr == 'sbx') {
         // cleanWs()
          //   steps {
               //  script {
-                    load "./${envr}.env.sh"
-             //   }
-                withCredentials([usernamePassword(credentialsId: "${GIT_CRED_ID}", usernameVariable: 'GITHUB_USERNAME', passwordVariable: 'GITHUB_PASSWORD')]) {
-                // environment {
-                //     GITHUB_CREDS = credentials("${GIT_CRED_ID}")
-                //     GITHUB_USERNAME = "$GITHUB_CREDS_USR"
-                //     GITHUB_PASSWORD = "$GITHUB_CREDS_PSW"
-                //     MVN_URL = "${MVN_URL}"
-                //     SCM_URL = "${SCM_URL}"
-                // }
-                    dir("${SCM_REPO}") {
-                        sh """
-                        #!/bin/bash
-                        echo ${envr}
-                        . ./${envr}.env.sh
-                        env
+            load "./${envr}.env.sh"
+            //   }
+            withCredentials([usernamePassword(credentialsId: "${GIT_CRED_ID}", usernameVariable: 'GITHUB_USERNAME', passwordVariable: 'GITHUB_PASSWORD')]) {
+            // environment {
+            //     GITHUB_CREDS = credentials("${GIT_CRED_ID}")
+            //     GITHUB_USERNAME = "$GITHUB_CREDS_USR"
+            //     GITHUB_PASSWORD = "$GITHUB_CREDS_PSW"
+            //     MVN_URL = "${MVN_URL}"
+            //     SCM_URL = "${SCM_URL}"
+            // }
+                dir("${SCM_REPO}") {
+                    sh """
+                    #!/bin/bash
+                    echo ${envr}
+                    . ./${envr}.env.sh
+                    env
 
-                        pwd
-                        #./deploy.sh
-                        """
-                    }
+                    pwd
+                    #./deploy.sh
+                    """
                 }
+            }
           //  }
-//        }
+        }
 
 
-  }
+
 }
 
 
