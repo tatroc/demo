@@ -142,7 +142,7 @@ node('jenkinsAgent') {
         stage('Prepare') {
          //   steps {
               //  script {
-                    load "./${envr}.env.sh"
+               //     load "./${envr}.env.sh"
              //   }
                 // environment {
                 //     GITHUB_CREDS = credentials("${GIT_CRED_ID}")
@@ -151,14 +151,16 @@ node('jenkinsAgent') {
                 //     MVN_URL = "${MVN_URL}"
                 //     SCM_URL = "${SCM_URL}"
                 // }
+                withCredentials([usernamePassword(credentialsId: "${GIT_CRED_ID}", usernameVariable: 'GITHUB_USERNAME', passwordVariable: 'GITHUB_PASSWORD')]) {
 
+                    //assuming mvn-settings.xml is at root/current folder, otherwise provide absolute or relative path
+                    dir("${SCM_REPO}") {
+                        sh '''
+                        #!/bin/bash
+                        ./prepare.sh
+                        '''
+                    }
 
-                //assuming mvn-settings.xml is at root/current folder, otherwise provide absolute or relative path
-                dir("${SCM_REPO}") {
-                    sh '''
-                    #!/bin/bash
-                    ./prepare.sh
-                    '''
                 }
          //   }
         }
