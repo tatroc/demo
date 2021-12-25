@@ -43,7 +43,10 @@ node('jenkinsAgent') {
       //  env.PATH = "${dockerHome}/bin:${mavenHome}/bin:${env.PATH}"
         sh """
         ls -la
-        ls -la ${env.WORKSPACE}@tmp
+
+        ls -la ..
+
+        ls -la ${env.WORKSPACE}@tmp/
         """
         load "${env.WORKSPACE}@tmp/${envr}.env.sh"
         echo "${GIT_CRED_ID}"
