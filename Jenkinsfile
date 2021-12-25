@@ -31,7 +31,7 @@ environment {
     GIT_AUTHOR_EMAIL = "tss-devops@kaplan.com"
     GIT_COMMITTER_NAME = "$GIT_AUTHOR_NAME"
 }
-
+echo 'set env vars'
         // def SCM_REPO="demo"
         // def SCM_OWNER="tatroc"
         // def GIT_REPO="demo"
