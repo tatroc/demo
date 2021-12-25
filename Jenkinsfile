@@ -22,7 +22,7 @@ def envr = "sbx"
 
 
 
-node('cloudops-dev') {
+node() {
   //triggers{pollSCM('*/1 * * * *')}
     if (envr == 'sbx') {
         def SCM_REPO="demo"
