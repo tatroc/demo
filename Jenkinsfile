@@ -64,7 +64,7 @@ if (envr == 'sbx') {
 
 
   //agent { label 'cloudops-dev' }
-  stages {
+  //stages {
 
 
         stage ('Checkout') {
@@ -89,7 +89,7 @@ if (envr == 'sbx') {
                     '''
                 }
            // }
-        }
+//        }
 
         stage('Prepare') {
          //   steps {
@@ -145,7 +145,7 @@ if (envr == 'sbx') {
                     }
                 }
           //  }
-        }
+//        }
 
 
   }
