@@ -22,7 +22,7 @@ def envr = "sbx"
 
 
 
-node('jenkinsAgentV2') {
+node('jenkinsAgent') {
   //triggers{pollSCM('*/1 * * * *')}
     if (envr == 'sbx') {
         def SCM_REPO="demo"
