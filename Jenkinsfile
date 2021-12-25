@@ -31,6 +31,7 @@ environment {
     GIT_AUTHOR_EMAIL = "tss-devops@kaplan.com"
     GIT_COMMITTER_NAME = "$GIT_AUTHOR_NAME"
 }
+echo "${env.DEBIAN_FRONTEND}"
 echo 'set env vars'
         // def SCM_REPO="demo"
         // def SCM_OWNER="tatroc"
@@ -56,8 +57,10 @@ echo 'set env vars'
 
         ls -la ${env.WORKSPACE}@tmp/
         """
-        load "${env.WORKSPACE}@tmp/${envr}.env.sh"
+        echo "${env.DEBIAN_FRONTEND}"
         echo "${GIT_CRED_ID}"
+        load "${env.WORKSPACE}@tmp/${envr}.env.sh"
+
 
 
     }
