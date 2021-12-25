@@ -42,6 +42,7 @@ node('jenkinsAgent') {
       //  def mavenHome  = tool 'MyMaven'
       //  env.PATH = "${dockerHome}/bin:${mavenHome}/bin:${env.PATH}"
         sh """
+        env
         ls -la
 
         ls -la ..
