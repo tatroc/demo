@@ -1,4 +1,6 @@
 #!/bin/bash
+export DEBIAN_FRONTEND="noninteractive"
+env
 mkdir -p ~/.m2
 cp ./mvn-settings.xml ~/.m2/settings.xml
 dpkg -s maven || EXIT_CODE=$?
