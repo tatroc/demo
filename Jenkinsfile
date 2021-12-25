@@ -35,7 +35,7 @@ node('jenkinsAgent') {
   checkout scm
 
 
-  load "${env.WORKSPACE}/${envr}.env.groovy"
+  load "${env.WORKSPACE}/${envr}.env.sh"
   println("My SCM: " + "${SCM_REPO}")
 //    if (envr == 'sbx') {
 
@@ -155,10 +155,11 @@ node('jenkinsAgent') {
 
                     //assuming mvn-settings.xml is at root/current folder, otherwise provide absolute or relative path
                     dir("${SCM_REPO}") {
-                        sh '''
+                        sh """
                         #!/bin/bash
+                        . ./${envr}.env.sh
                         ./prepare.sh
-                        '''
+                        """
                     }
 
                 }
