@@ -1,12 +1,12 @@
 
 def envr = "sbx"
 
-def SCM_REPO
-def SCM_OWNER
-// def GIT_REPO="demo"
-def SCM_URL
-def GIT_CRED_ID
-def GIT_BRANCH
+// def SCM_REPO
+// def SCM_OWNER
+// // def GIT_REPO="demo"
+// def SCM_URL
+// def GIT_CRED_ID
+// def GIT_BRANCH
 
 
 // if (envr == 'sbx') {
@@ -36,7 +36,7 @@ node('jenkinsAgent') {
 
 
   load "${env.WORKSPACE}/${envr}.env.groovy"
-  println("My SCM: " + "${SCM_REPO2}")
+  println("My SCM: " + "${SCM_REPO}")
 //    if (envr == 'sbx') {
 
 //echo "${env.DEBIAN_FRONTEND}"
@@ -59,7 +59,7 @@ node('jenkinsAgent') {
       //  def dockerHome = tool 'MyDocker'
       //  def mavenHome  = tool 'MyMaven'
       //  env.PATH = "${dockerHome}/bin:${mavenHome}/bin:${env.PATH}"
-      println("My SCM: " + "${SCM_REPO2}")
+      println("My SCM: " + "${SCM_REPO}")
         sh """
         echo "${SCM_REPO}"
         echo "${SCM_URL}"
