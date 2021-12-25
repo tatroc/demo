@@ -22,7 +22,7 @@ def envr = "sbx"
 
 
 
-node {
+node('cloudops-dev') {
   //triggers{pollSCM('*/1 * * * *')}
 if (envr == 'sbx') {
     def SCM_REPO="demo"
@@ -63,16 +63,16 @@ if (envr == 'sbx') {
 //     }
 
 
-  agent { label 'cloudops-dev' }
+  //agent { label 'cloudops-dev' }
   stages {
 
 
         stage ('Checkout') {
 
         // cleanWs()
-            steps {
+           // steps {
                 // script {
-                //     load "./${envr}.env.sh"
+                    load "./${envr}.env.sh"
                 // }
 
                 dir("${SCM_REPO}") {
@@ -88,14 +88,14 @@ if (envr == 'sbx') {
                     pwd
                     '''
                 }
-            }
+           // }
         }
 
         stage('Prepare') {
-            steps {
-                script {
+         //   steps {
+              //  script {
                     load "./${envr}.env.sh"
-                }
+             //   }
                 // environment {
                 //     GITHUB_CREDS = credentials("${GIT_CRED_ID}")
                 //     GITHUB_USERNAME = "$GITHUB_CREDS_USR"
@@ -112,7 +112,7 @@ if (envr == 'sbx') {
                     ./prepare.sh
                     '''
                 }
-            }
+         //   }
         }
 
 
@@ -120,10 +120,10 @@ if (envr == 'sbx') {
 
         stage ('Build') {
         // cleanWs()
-            steps {
-                script {
+         //   steps {
+              //  script {
                     load "./${envr}.env.sh"
-                }
+             //   }
                 withCredentials([usernamePassword(credentialsId: "${GIT_CRED_ID}", usernameVariable: 'GITHUB_USERNAME', passwordVariable: 'GITHUB_PASSWORD')]) {
                 // environment {
                 //     GITHUB_CREDS = credentials("${GIT_CRED_ID}")
@@ -144,7 +144,7 @@ if (envr == 'sbx') {
                         """
                     }
                 }
-            }
+          //  }
         }
 
 
