@@ -35,8 +35,8 @@ node('jenkinsAgent') {
   checkout scm
 
 
-  load "${env.WORKSPACE}/${envr}.env.sh"
-  println("My SCM: " + "${env.SCM_URL}")
+  load "${env.WORKSPACE}/${envr}.env.groovy"
+  println("My SCM: " + "${SCM_REPO}")
 //    if (envr == 'sbx') {
 
 //echo "${env.DEBIAN_FRONTEND}"
