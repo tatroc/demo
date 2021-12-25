@@ -33,20 +33,23 @@ def GIT_BRANCH
 node('jenkinsAgent') {
   //triggers{pollSCM('*/1 * * * *')}
   checkout scm
-    if (envr == 'sbx') {
+
+
+  load "${env.WORKSPACE}/${envr}.env.sh"
+//    if (envr == 'sbx') {
 
 //echo "${env.DEBIAN_FRONTEND}"
-echo 'set env vars'
-         SCM_REPO="demo"
-         SCM_OWNER="tatroc"
-        // def GIT_REPO="demo"
-         SCM_URL="https://github.com/tatroc/${SCM_REPO}.git"
-         GIT_CRED_ID="tatroc_gh"
-         GIT_BRANCH="dev"
-        // def MVN_URL="https://maven.pkg.github.com/tatroc/demo"
-    } else {
-        echo 'I execute elsewhere'
-    }
+// echo 'set env vars'
+//          SCM_REPO="demo"
+//          SCM_OWNER="tatroc"
+//         // def GIT_REPO="demo"
+//          SCM_URL="https://github.com/tatroc/${SCM_REPO}.git"
+//          GIT_CRED_ID="tatroc_gh"
+//          GIT_BRANCH="dev"
+//         // def MVN_URL="https://maven.pkg.github.com/tatroc/demo"
+//     } else {
+//         echo 'I execute elsewhere'
+//     }
 
     stage('Initialize')
     {
@@ -65,7 +68,7 @@ echo 'set env vars'
         """
         //echo "${env.DEBIAN_FRONTEND}"
         //echo "${GIT_CRED_ID}"
-        load "${env.WORKSPACE}@tmp/${envr}.env.sh"
+        //load "${env.WORKSPACE}@tmp/${envr}.env.sh"
 
 
 
@@ -113,7 +116,7 @@ echo 'set env vars'
     // cleanWs()
         // steps {
             // script {
-        load "./${envr}.env.sh"
+        //load "./${envr}.env.sh"
             // }
 
         dir("${SCM_REPO}") {
