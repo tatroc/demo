@@ -1,12 +1,12 @@
 
 def envr = "sbx"
 
-def SCM_REPO=
-def SCM_OWNER=
+def SCM_REPO
+def SCM_OWNER
 // def GIT_REPO="demo"
-def SCM_URL=
-def GIT_CRED_ID=
-def GIT_BRANCH=
+def SCM_URL
+def GIT_CRED_ID
+def GIT_BRANCH
 
 
 // if (envr == 'sbx') {
