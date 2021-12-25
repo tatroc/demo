@@ -172,7 +172,7 @@ node('jenkinsAgent') {
         // cleanWs()
          //   steps {
               //  script {
-            load "./${envr}.env.sh"
+            //load "./${envr}.env.sh"
             //   }
             withCredentials([usernamePassword(credentialsId: "${GIT_CRED_ID}", usernameVariable: 'GITHUB_USERNAME', passwordVariable: 'GITHUB_PASSWORD')]) {
             // environment {
@@ -185,7 +185,7 @@ node('jenkinsAgent') {
                 dir("${SCM_REPO}") {
                     sh """
                     #!/bin/bash
-                    echo ${envr}
+                    #echo ${envr}
                     . ./${envr}.env.sh
                     env
 
