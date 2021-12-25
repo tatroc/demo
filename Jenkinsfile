@@ -49,6 +49,8 @@ echo 'set env vars'
 
     stage('Initialize')
     {
+
+    cleanWs disableDeferredWipeout: true, deleteDirs: true
       //  def dockerHome = tool 'MyDocker'
       //  def mavenHome  = tool 'MyMaven'
       //  env.PATH = "${dockerHome}/bin:${mavenHome}/bin:${env.PATH}"
@@ -61,7 +63,7 @@ echo 'set env vars'
         ls -la ${env.WORKSPACE}@tmp/
         """
         //echo "${env.DEBIAN_FRONTEND}"
-        #echo "${GIT_CRED_ID}"
+        //echo "${GIT_CRED_ID}"
         load "${env.WORKSPACE}@tmp/${envr}.env.sh"
 
 
@@ -183,6 +185,10 @@ echo 'set env vars'
                 }
             }
           //  }
+        }
+
+        stage ('Cleanup') {
+            cleanWs disableDeferredWipeout: true, deleteDirs: true
         }
 
 
