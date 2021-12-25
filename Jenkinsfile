@@ -69,7 +69,10 @@ node('jenkinsAgent') {
 
     stage ('Checkout') {
         sh """
+    
         pwd
+        ls -la
+        cd ..
         ls -la
         """
     // cleanWs()
