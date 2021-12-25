@@ -32,6 +32,7 @@ def GIT_BRANCH
 
 node('jenkinsAgent') {
   //triggers{pollSCM('*/1 * * * *')}
+  checkout scm
     if (envr == 'sbx') {
 
 //echo "${env.DEBIAN_FRONTEND}"
@@ -50,7 +51,7 @@ echo 'set env vars'
     stage('Initialize')
     {
 
-    cleanWs disableDeferredWipeout: true, deleteDirs: true
+    //cleanWs disableDeferredWipeout: true, deleteDirs: true
       //  def dockerHome = tool 'MyDocker'
       //  def mavenHome  = tool 'MyMaven'
       //  env.PATH = "${dockerHome}/bin:${mavenHome}/bin:${env.PATH}"
