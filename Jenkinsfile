@@ -36,6 +36,7 @@ node('jenkinsAgent') {
 
 
   load "${env.WORKSPACE}/${envr}.env.sh"
+  println("${SCM_URL}")
 //    if (envr == 'sbx') {
 
 //echo "${env.DEBIAN_FRONTEND}"
