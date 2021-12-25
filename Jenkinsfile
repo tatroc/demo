@@ -26,12 +26,12 @@ node('jenkinsAgent') {
   //triggers{pollSCM('*/1 * * * *')}
     if (envr == 'sbx') {
 
-echo "${env.DEBIAN_FRONTEND}"
+//echo "${env.DEBIAN_FRONTEND}"
 echo 'set env vars'
          def SCM_REPO="demo"
-        // def SCM_OWNER="tatroc"
+         def SCM_OWNER="tatroc"
         // def GIT_REPO="demo"
-         def SCM_URL="https://github.com/tatroc/${GIT_REPO}.git"
+         def SCM_URL="https://github.com/tatroc/${SCM_REPO}.git"
          def GIT_CRED_ID="tatroc_gh"
         def GIT_BRANCH="dev"
         // def MVN_URL="https://maven.pkg.github.com/tatroc/demo"
