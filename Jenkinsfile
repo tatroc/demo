@@ -24,12 +24,21 @@ def envr = "sbx"
 
 pipeline {
   //triggers{pollSCM('*/1 * * * *')}
-environment {
-    DEBIAN_FRONTEND = "noninteractive"
-    GIT_AUTHOR_NAME = "jenkins"
-    GIT_AUTHOR_EMAIL = "tss-devops@kaplan.com"
-    GIT_COMMITTER_NAME = "$GIT_AUTHOR_NAME"
-}
+options {
+        script {
+                    load "./${envr}.env.sh"
+                }
+    }
+
+
+// environment {
+//     DEBIAN_FRONTEND = "noninteractive"
+//     GIT_AUTHOR_NAME = "jenkins"
+//     GIT_AUTHOR_EMAIL = "tss-devops@kaplan.com"
+//     GIT_COMMITTER_NAME = "$GIT_AUTHOR_NAME"
+// }
+
+
 // environment {
 //         GITHUB_CREDS = credentials("${GIT_CRED_ID}")
 //         GITHUB_USERNAME = "$GITHUB_CREDS_USR"
@@ -56,9 +65,9 @@ environment {
 
         // cleanWs()
             steps {
-                script {
-                    load "./${envr}.env.sh"
-                }
+                // script {
+                //     load "./${envr}.env.sh"
+                // }
 
                 dir("${SCM_REPO}") {
                     checkout([$class: 'GitSCM', 
@@ -109,6 +118,7 @@ environment {
                 script {
                     load "./${envr}.env.sh"
                 }
+                withCredentials([usernamePassword(credentialsId: "${GIT_CRED_ID}", usernameVariable: 'GITHUB_USERNAME', passwordVariable: 'GITHUB_PASSWORD')]) {
                 // environment {
                 //     GITHUB_CREDS = credentials("${GIT_CRED_ID}")
                 //     GITHUB_USERNAME = "$GITHUB_CREDS_USR"
@@ -116,16 +126,17 @@ environment {
                 //     MVN_URL = "${MVN_URL}"
                 //     SCM_URL = "${SCM_URL}"
                 // }
-                dir("${SCM_REPO}") {
-                    sh """
-                    #!/bin/bash
-                    echo ${envr}
-                    . ./${envr}.env.sh
-                    env
+                    dir("${SCM_REPO}") {
+                        sh """
+                        #!/bin/bash
+                        echo ${envr}
+                        . ./${envr}.env.sh
+                        env
 
-                    pwd
-                    #./deploy.sh
-                    """
+                        pwd
+                        #./deploy.sh
+                        """
+                    }
                 }
             }
         }
