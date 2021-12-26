@@ -40,6 +40,11 @@ else
 fi
 
 
+if [ $DEBUG == "1" ]; then
+    which git
+    git --version
+fi
+
 
 
 function getmoduledirectories {
@@ -54,6 +59,8 @@ if [[ ! "${WORK_DIR}" || ! -d "${WORK_DIR}" ]]; then
 fi
 
 git log --pretty="%D %H" --decorate=short --decorate-refs=refs/tags > "${WORK_DIR}/${ALL_COMMIT_HASH_FILE}"
+ls -la "${WORK_DIR}/"
+
 
 exec 4<"${WORK_DIR}/${ALL_COMMIT_HASH_FILE}"
 while read -u4 line ; do
