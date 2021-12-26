@@ -14,7 +14,7 @@ if [ $EXIT_CODE -eq 1 ]; then
 fi
 
 export JAVA_HOME=/usr
-export M2_HOME=/usr
+export M2_HOME=/usr/share/maven
 
 if [ $DEBUG == "1" ]; then
     cat ~/.m2/settings.xml
