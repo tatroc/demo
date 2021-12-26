@@ -9,7 +9,7 @@ if [ $EXIT_CODE -eq 1 ]; then
     apt update
     apt install -y maven
 fi
-export JAVA_HOME=/usr/bin
+export JAVA_HOME=/usr
 export M2_HOME=/usr/bin
 which java
 which mvn
