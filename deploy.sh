@@ -45,6 +45,9 @@ fi
 function getmoduledirectories {
 
 WORK_DIR=$(mktemp -d -p "/tmp")
+git branch
+echo "TEMP WORK DIRECTORY: ${WORK_DIR}"
+
 if [[ ! "${WORK_DIR}" || ! -d "${WORK_DIR}" ]]; then
   echo "Could not create /tmp dir"
   exit 1
