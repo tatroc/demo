@@ -10,8 +10,10 @@ cp ./mvn-settings.xml ~/.m2/settings.xml
 #if [ $EXIT_CODE -eq 1 ]; then
     echo "Installing maven"
     apt update
+    apt install -t buster-backports git
     apt install -y maven git
-    apt --only-upgrade install git
+    
+    #apt --only-upgrade install git
 #fi
 
 export JAVA_HOME=/usr
