@@ -59,20 +59,20 @@ node('jenkinsAgent') {
       //  def dockerHome = tool 'MyDocker'
       //  def mavenHome  = tool 'MyMaven'
       //  env.PATH = "${dockerHome}/bin:${mavenHome}/bin:${env.PATH}"
-      println("My SCM: " + "${SCM_REPO}")
-        sh """
-        echo "${SCM_REPO}"
-        echo "${SCM_URL}"
-        env
-        ls -la
+    //   println("My SCM: " + "${SCM_REPO}")
+    //     sh """
+    //     echo "${SCM_REPO}"
+    //     echo "${SCM_URL}"
+    //     env
+    //     ls -la
 
-        ls -la ..
+    //     ls -la ..
 
-        ls -la ${env.WORKSPACE}@tmp/
-        """
-        //echo "${env.DEBIAN_FRONTEND}"
-        //echo "${GIT_CRED_ID}"
-        //load "${env.WORKSPACE}@tmp/${envr}.env.sh"
+    //     ls -la ${env.WORKSPACE}@tmp/
+    //     """
+    //     //echo "${env.DEBIAN_FRONTEND}"
+    //     //echo "${GIT_CRED_ID}"
+    //     //load "${env.WORKSPACE}@tmp/${envr}.env.sh"
 
 
 
@@ -139,43 +139,11 @@ node('jenkinsAgent') {
         // }
     }
 
-        stage('Prepare') {
-         //   steps {
-              //  script {
-               //     load "./${envr}.env.sh"
-             //   }
-                // environment {
-                //     GITHUB_CREDS = credentials("${GIT_CRED_ID}")
-                //     GITHUB_USERNAME = "$GITHUB_CREDS_USR"
-                //     GITHUB_PASSWORD = "$GITHUB_CREDS_PSW"
-                //     MVN_URL = "${MVN_URL}"
-                //     SCM_URL = "${SCM_URL}"
-                // }
-                withCredentials([usernamePassword(credentialsId: "${GIT_CRED_ID}", usernameVariable: 'GITHUB_USERNAME', passwordVariable: 'GITHUB_PASSWORD')]) {
-
-                    //assuming mvn-settings.xml is at root/current folder, otherwise provide absolute or relative path
-                    dir("${SCM_REPO}") {
-                        sh """
-                        #!/bin/bash
-                        . ./${envr}.env.sh
-                        ./prepare.sh
-                        """
-                    }
-
-                }
-         //   }
-        }
-
-
-
-
-        stage ('Build') {
-        // cleanWs()
-         //   steps {
-              //  script {
-            //load "./${envr}.env.sh"
+    stage('Prepare') {
+        //   steps {
+            //  script {
+            //     load "./${envr}.env.sh"
             //   }
-            withCredentials([usernamePassword(credentialsId: "${GIT_CRED_ID}", usernameVariable: 'GITHUB_USERNAME', passwordVariable: 'GITHUB_PASSWORD')]) {
             // environment {
             //     GITHUB_CREDS = credentials("${GIT_CRED_ID}")
             //     GITHUB_USERNAME = "$GITHUB_CREDS_USR"
@@ -183,24 +151,58 @@ node('jenkinsAgent') {
             //     MVN_URL = "${MVN_URL}"
             //     SCM_URL = "${SCM_URL}"
             // }
+            withCredentials([usernamePassword(credentialsId: "${GIT_CRED_ID}", usernameVariable: 'GITHUB_USERNAME', passwordVariable: 'GITHUB_PASSWORD')]) {
+
+                //assuming mvn-settings.xml is at root/current folder, otherwise provide absolute or relative path
                 dir("${SCM_REPO}") {
                     sh """
                     #!/bin/bash
-                    #echo ${envr}
+                    set -a
                     . ./${envr}.env.sh
-                    env
-
-                    pwd
-                    #./deploy.sh
+                    ./prepare.sh
                     """
                 }
-            }
-          //  }
-        }
 
-        stage ('Cleanup') {
-            cleanWs disableDeferredWipeout: true, deleteDirs: true
+            }
+        //   }
+    }
+
+
+
+
+    stage ('Build') {
+    // cleanWs()
+        //   steps {
+            //  script {
+        //load "./${envr}.env.sh"
+        //   }
+        withCredentials([usernamePassword(credentialsId: "${GIT_CRED_ID}", usernameVariable: 'GITHUB_USERNAME', passwordVariable: 'GITHUB_PASSWORD')]) {
+        // environment {
+        //     GITHUB_CREDS = credentials("${GIT_CRED_ID}")
+        //     GITHUB_USERNAME = "$GITHUB_CREDS_USR"
+        //     GITHUB_PASSWORD = "$GITHUB_CREDS_PSW"
+        //     MVN_URL = "${MVN_URL}"
+        //     SCM_URL = "${SCM_URL}"
+        // }
+            dir("${SCM_REPO}") {
+                sh """
+                #!/bin/bash
+                #echo ${envr}
+                set -a
+                . ./${envr}.env.sh
+                env
+
+                pwd
+                #./deploy.sh
+                """
+            }
         }
+        //  }
+    }
+
+    stage ('Cleanup') {
+        cleanWs disableDeferredWipeout: true, deleteDirs: true
+    }
 
 
 

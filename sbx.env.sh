@@ -1,4 +1,3 @@
-
 SCM_OWNER="tatroc"
 SCM_REPO="demo"
 SCM_REPO2="demo"
