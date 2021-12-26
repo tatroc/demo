@@ -9,6 +9,8 @@ if [ $EXIT_CODE -eq 1 ]; then
     apt update
     apt install -y maven
 fi
+ls -la /usr/apps/kbs/maven3/
+export M2_HOME=/usr/bin
 which java
 which mvn
 env
