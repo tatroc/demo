@@ -11,6 +11,7 @@ cp ./mvn-settings.xml ~/.m2/settings.xml
     echo "Installing maven"
     apt update
     apt install -y maven git
+    apt --only-upgrade install git
 #fi
 
 export JAVA_HOME=/usr
