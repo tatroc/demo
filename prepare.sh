@@ -21,6 +21,7 @@ if [ $DEBUG == "1" ]; then
     which java
     which mvn
     env
+    update-alternatives --get-selections
 fi
 
 mvn -v
