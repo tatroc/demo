@@ -55,73 +55,9 @@ node('jenkinsAgent') {
     stage('Initialize')
     {
 
-    //cleanWs disableDeferredWipeout: true, deleteDirs: true
-      //  def dockerHome = tool 'MyDocker'
-      //  def mavenHome  = tool 'MyMaven'
-      //  env.PATH = "${dockerHome}/bin:${mavenHome}/bin:${env.PATH}"
-    //   println("My SCM: " + "${SCM_REPO}")
-    //     sh """
-    //     echo "${SCM_REPO}"
-    //     echo "${SCM_URL}"
-    //     env
-    //     ls -la
-
-    //     ls -la ..
-
-    //     ls -la ${env.WORKSPACE}@tmp/
-    //     """
-    //     //echo "${env.DEBIAN_FRONTEND}"
-    //     //echo "${GIT_CRED_ID}"
-    //     //load "${env.WORKSPACE}@tmp/${envr}.env.sh"
-
-
-
     }
 
-// environment {
-//     DEBIAN_FRONTEND = "noninteractive"
-//     GIT_AUTHOR_NAME = "jenkins"
-//     GIT_AUTHOR_EMAIL = "tss-devops@kaplan.com"
-//     GIT_COMMITTER_NAME = "$GIT_AUTHOR_NAME"
-// }
-
-
-// environment {
-//         GITHUB_CREDS = credentials("${GIT_CRED_ID}")
-//         GITHUB_USERNAME = "$GITHUB_CREDS_USR"
-//         GITHUB_PASSWORD = "$GITHUB_CREDS_PSW"
-//         DEBIAN_FRONTEND = "noninteractive"
-//         GIT_AUTHOR_NAME = "jenkins"
-//         GIT_AUTHOR_EMAIL = "tss-devops@kaplan.com"
-//         GIT_COMMITTER_NAME = "$GIT_AUTHOR_NAME"
-//         MVN_URL = "$MVN_URL"
-//         SCM_URL = "$SCM_URL"
-//     }
-//     script {
-//         if ('1' == '1') {
-//             echo "something"
-//         } 
-//     }
-
-
-  //agent { label 'cloudops-dev' }
-  //stages {
-
-
     stage ('Checkout') {
-                echo "${GIT_CRED_ID}"
-        sh """
-    
-        pwd
-        ls -la
-        cd ..
-        ls -la
-        """
-    // cleanWs()
-        // steps {
-            // script {
-        //load "./${envr}.env.sh"
-            // }
 
         dir("${SCM_REPO}") {
             checkout([$class: 'GitSCM', 
@@ -130,13 +66,8 @@ node('jenkinsAgent') {
                 submoduleCfg: [],
                 userRemoteConfigs: [[credentialsId: "${GIT_CRED_ID}", url: "${SCM_URL}"]]])
 
-            sh '''
-            ls -la
-            git branch
-            pwd
-            '''
         }
-        // }
+
     }
 
     stage('Prepare') {
@@ -167,9 +98,6 @@ node('jenkinsAgent') {
         //   }
     }
 
-
-
-
     stage ('Build') {
     // cleanWs()
         //   steps {
@@ -187,13 +115,9 @@ node('jenkinsAgent') {
             dir("${SCM_REPO}") {
                 sh """
                 #!/bin/bash
-                #echo ${envr}
                 set -a
                 . ./${envr}.env.sh
-                env
-
-                pwd
-                #./deploy.sh
+                ./deploy.sh
                 """
             }
         }
@@ -203,8 +127,6 @@ node('jenkinsAgent') {
     stage ('Cleanup') {
         cleanWs disableDeferredWipeout: true, deleteDirs: true
     }
-
-
 
 }
 

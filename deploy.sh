@@ -2,9 +2,10 @@
 HASH_FILE="commit_hashes.txt"
 ALL_COMMIT_HASH_FILE="all_commit_hashes.txt"
 COMMITTED_UNTAGGED_FILES="committed_untagged_files.txt"
-
+DEBUG=1
 #export SCM_URL=https://github.com/tatroc/demo.git
 #export MVN_URL=https://maven.pkg.github.com/tatroc/demo
+
 
 
 
