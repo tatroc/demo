@@ -9,11 +9,12 @@ cp ./mvn-settings.xml ~/.m2/settings.xml
 #dpkg -s maven || EXIT_CODE=$?
 #if [ $EXIT_CODE -eq 1 ]; then
     echo "Installing maven"
+    apt update
     apt install -y software-properties-common
     apt update
     add-apt-repository ppa:git-core/ppa -y
     apt update
-    apt install -y -t buster-backports git
+    #apt install -y -t buster-backports git
     apt install -y maven git
     
     #apt --only-upgrade install git
