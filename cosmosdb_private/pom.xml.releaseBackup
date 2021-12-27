@@ -11,6 +11,7 @@
         <developerConnection>scm:git:${env.SCM_URL}</developerConnection>
   
 
+
   </scm>
 <!--10 -->
     <distributionManagement>
