@@ -6,7 +6,7 @@ DEBUG=1
 #export SCM_URL=https://github.com/tatroc/demo.git
 #export MVN_URL=https://maven.pkg.github.com/tatroc/demo
 
-
+git config --global http.sslVerify false
 
 
 if [[ -z "${SCM_URL}" ]]; then
