@@ -4,7 +4,7 @@ def envr = "sbx"
 
 
 
-node('jenkinsAgentv2') {
+node('jenkinsAgentV2') {
   //triggers{pollSCM('*/1 * * * *')}
   checkout scm
 
