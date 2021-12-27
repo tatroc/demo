@@ -126,14 +126,6 @@ else
 fi
 
 
-
-# if [ -z "$DIRECTORY_LIST" ]
-# then
-#       echo "var \$DIRECTORY_LIST is empty, exiting..."
-#       exit 1
-# else
-#       echo "var \$DIRECTORY_LIST is NOT empty"
-# fi
 BASE_DIR=$(pwd)
 echo "Base directory ${BASE_DIR}"
 
