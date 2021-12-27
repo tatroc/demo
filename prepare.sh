@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DEBUG=1
+DEBUG=0
 
 export DEBIAN_FRONTEND="noninteractive"
 env
@@ -13,15 +13,11 @@ GIT_VER_RELEASE=$(git --version | awk '{ print $3 }' | awk -F '.' '{ print $1 }'
 GIT_VER_MAJOR=$(git --version | awk '{ print $3 }' | awk -F '.' '{ print $1 }')
 GIT_VER=$GIT_VER_RELEASE.$GIT_VER_MAJOR
 
-st=$(echo "2.17 < $GIT_VER" | bc)
-
-if [ $st -eq 1]; then
-  echo -e "$num1 < $num2 , Install git version > 2.17"
-  exit 1
+if awk "BEGIN {exit !($GIT_VER >= 2.17)}"; then
+    echo "yes"
 else
-  echo -e "$num1 >= $num2"
+    echo "Install git version > 2.17"
 fi
-
 
 
     echo "Installing maven"
