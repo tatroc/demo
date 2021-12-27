@@ -3,7 +3,7 @@
    
         <groupId>org.kna</groupId>
         <artifactId>cosmosdb_private</artifactId>
-        <version>1.0.285-SNAPSHOT</version>
+        <version>1.0.285</version>
 
 
     <scm>
@@ -15,6 +15,7 @@
 
 
 
+    <tag>cosmosdb_private-1.0.285</tag>
   </scm>
 <!--10 -->
     <distributionManagement>
