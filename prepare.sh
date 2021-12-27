@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DEBUG=0
+DEBUG=1
 
 export DEBIAN_FRONTEND="noninteractive"
 env
