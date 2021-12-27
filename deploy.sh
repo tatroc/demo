@@ -65,7 +65,7 @@ ls -la "${WORK_DIR}/"
 exec 4<"${WORK_DIR}/${ALL_COMMIT_HASH_FILE}"
 while read -u4 line ; do
     if [[ "$line" != *"tag"* ]]; then
-        echo "No tag found in commit: $line"
+        echo "Unable to locate Git tag for commit: $line"
         echo $line >> "${WORK_DIR}/${HASH_FILE}"
     else
         echo "Latest tag found in commit: $line"
@@ -143,7 +143,7 @@ do
     echo "Working on directory: ./${wrkdir}"
     cd $wrkdir
 
-    mvn --batch-mode build-helper:released-version release:clean release:prepare release:perform install github-release:github-release
+    mvn --batch-mode build-helper:released-version release:clean release:prepare release:perform install github-release:github-release -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true -Dmaven.wagon.http.ssl.ignore.validity.dates=true
     if [ $? -eq 0 ]; then
         echo OK
     else
