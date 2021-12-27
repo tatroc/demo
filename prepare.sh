@@ -17,13 +17,14 @@ cp ./mvn-settings.xml ~/.m2/settings.xml
     #apt install -y -t buster-backports git
     apt install -y maven git
     
-    #apt --only-upgrade install git
+    apt -y --only-upgrade install git
 #fi
 
 export JAVA_HOME=/usr
 export M2_HOME=/usr/share/maven
 
 if [ $DEBUG == "1" ]; then
+    cat /etc/os-release
     cat ~/.m2/settings.xml
     which java
     which mvn
