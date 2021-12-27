@@ -147,7 +147,7 @@ do
     if [ $? -eq 0 ]; then
         echo OK
     else
-        echo "release failed for module ${wrkdir}"
+        echo "Release failed for module ${wrkdir}"
         exit 1
     fi
 

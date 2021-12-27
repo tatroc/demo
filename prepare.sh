@@ -14,7 +14,7 @@ GIT_VER_MAJOR=$(git --version | awk '{ print $3 }' | awk -F '.' '{ print $1 }')
 GIT_VER=$GIT_VER_RELEASE.$GIT_VER_MAJOR
 
 if awk "BEGIN {exit !($GIT_VER >= 2.17)}"; then
-    echo "Git version requirements met"
+    echo "Git version requirements met ${GIT_VER_RELEASE}"
 else
     echo "Install git version > 2.17"
 fi
