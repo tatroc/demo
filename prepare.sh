@@ -19,16 +19,19 @@ else
     echo "Install git version > 2.17"
 fi
 
+git config --global user.email "${GIT_AUTHOR_EMAIL}"
+git config --global user.name "${GIT_AUTHOR_NAME}"
 
-    echo "Installing maven"
+
+echo "Installing maven"
 #    apt update
 #    apt install -y software-properties-common
 #    apt update
 #    add-apt-repository ppa:git-core/ppa -y
-    apt update
-    #apt install -y -t buster-backports git
-    apt install -y maven # git
-    
+apt update
+#apt install -y -t buster-backports git
+apt install -y maven # git
+
 #    apt -y --only-upgrade install git
 #fi
 
