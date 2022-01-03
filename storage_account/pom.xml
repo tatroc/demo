@@ -1,14 +1,12 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.kna</groupId>
     <artifactId>storage_account</artifactId>
-    <version>1.0.294-SNAPSHOT</version>
+    <version>1.0.294</version>
     <scm>
         <connection>scm:git:${env.SCM_URL}</connection>
         <developerConnection>scm:git:${env.SCM_URL}</developerConnection>
-        <tag>HEAD</tag>
+        <tag>storage_account-1.0.294</tag>
     </scm>
     <!-- 10 -->
     <distributionManagement>
