@@ -39,3 +39,26 @@ Since these are modules that are referred by other projects or resources, the co
 | 23.| vnet-gateway-mesh | Module to create virtual network gateway mesh |
 | 24.| vnet | Module to create virtual network |
 | 25.| vnet_ignore_changes | Module to ignore changes done to virtual network |
+
+
+## Steps to setup a new module
+
+1. Create a directory for the module
+2. Create a README.md in the new directory, this step is important as the README.md is used as part of the release notes in github. Even if the READM.md is blank
+3. Copy pom.xml to the new directory
+4. Edit the artifactID in the pom.xml to have the same name as the directory, for example
+```
+<artifactId>cosmosdb_private</artifactId>
+```
+5. 
+```
+git add .
+git commit -m 'my new terraform module'
+git push
+```
+6. Jenkins job here will begin to execute
+Terraform Package Demo Jenkins Demo [Terraform Package Demo Jenkins Demo](https://jenkins.domain.com/view/CloudOps/job/TF_module_packaging_demo/)
+7. Maven artifacts will be published to Github
+8. Terraform release will be published to Github
+
+
