@@ -150,7 +150,7 @@ else
   exit 0
 fi
 
-echo $WORK_DIR
+echo "${FUNCNAME[0]}() :: working directory $WORK_DIR"
 
 
 if [[ "${DEBUG}" == "1" ]]; then
@@ -179,32 +179,53 @@ else
 fi
 
 
-
-sleep 900
+echo "${FUNCNAME[0]}() :: Exiting function ${FUNCNAME[0]}()"
 
 }
 
-getmoduledirectories #$HASH_FILE $ALL_COMMIT_HASH_FILE $COMMITTED_UNTAGGED_FILES
+#getmoduledirectories #$HASH_FILE $ALL_COMMIT_HASH_FILE $COMMITTED_UNTAGGED_FILES
 
 
-echo "Working with TF module directories ${DIRECTORY_LIST[@]}"
-
-
-TREE_CLEAN=$(git ls-files --deleted --modified --others --exclude-standard | wc -l)
-if [  $TREE_CLEAN -eq 0 ]; then
-   echo "Working tree clean"
+if [[ -z $(git status -s) ]]; then
+  getmoduledirectories
 else
-   echo "Working tree is not clean, please commit changes. Exiting..."
-   git status
-   exit 1
+  echo "Uncommitted files in local git, exiting..."
+  echo "git add . && git commit -m 'my message'"
+  git status
+  exit 1
 fi
+
+
+echo "### Contents of: ${WORK_DIR}/${TF_DIRECTORY_LIST} ###"
+cat "${WORK_DIR}/${TF_DIRECTORY_LIST}"
+
+mapfile -t TF_DIRS < "${WORK_DIR}/${TF_DIRECTORY_LIST}"
+
+
+
+
+
+# echo "Working with TF module directories ${DIRECTORY_LIST[@]}"
+
+
+# TREE_CLEAN=$(git ls-files --deleted --modified --others --exclude-standard | wc -l)
+# if [  $TREE_CLEAN -eq 0 ]; then
+#    echo "Working tree clean"
+# else
+#    echo "Working tree is not clean, please commit changes. Exiting..."
+#    git status
+#    exit 1
+# fi
 
 
 BASE_DIR=$(pwd)
 echo "Base directory ${BASE_DIR}"
 
+echo "Sleeping for 900 seconds"
+sleep 900
+
 # Package and Push TF modules to repository
-for wrkdir in "${DIRECTORY_LIST[@]}"
+for wrkdir in "${TF_DIRS[@]}"
 do
     echo "Working on directory: ./${wrkdir}"
     cd $wrkdir
