@@ -6,6 +6,11 @@ DEBUG=1
 #export SCM_URL=https://github.com/tatroc/demo.git
 #export MVN_URL=https://maven.pkg.github.com/tatroc/demo
 
+COMMIT_HASHES_FILE=hashes.txt 
+CHANGED_FILE_LIST=changed_files.txt
+TF_DIRECTORY_LIST=tf_directories.txt
+COMMIT_MESSAGES_FILE=commit_messages.txt
+
 git config --global http.sslVerify false
 
 
@@ -47,14 +52,17 @@ fi
 
 
 
+
+
+
 function getmoduledirectories {
 
 WORK_DIR=$(mktemp -d -p "/tmp")
 git branch
-echo "TEMP WORK DIRECTORY: ${WORK_DIR}"
+echo "${FUNCNAME[0]}() :: TEMP WORK DIRECTORY: ${WORK_DIR}"
 
 if [[ ! "${WORK_DIR}" || ! -d "${WORK_DIR}" ]]; then
-  echo "Could not create /tmp dir"
+  echo "${FUNCNAME[0]}() :: Could not create /tmp dir"
   exit 1
 fi
 
@@ -147,7 +155,7 @@ sleep 900
 
 }
 
-getmoduledirectories $HASH_FILE $ALL_COMMIT_HASH_FILE $COMMITTED_UNTAGGED_FILES
+getmoduledirectories #$HASH_FILE $ALL_COMMIT_HASH_FILE $COMMITTED_UNTAGGED_FILES
 
 
 echo "Working with TF module directories ${DIRECTORY_LIST[@]}"
