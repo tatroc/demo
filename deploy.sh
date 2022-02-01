@@ -151,6 +151,35 @@ else
 fi
 
 echo $WORK_DIR
+
+
+if [[ "${DEBUG}" == "1" ]]; then
+  #echo "${FUNCNAME[0]}() :: $line"
+  echo "${FUNCNAME[0]}() :: DEBUG :: List of changed files in commits"
+  cat "${WORK_DIR}/${CHANGED_FILE_LIST}"
+fi
+
+cat "${WORK_DIR}/${CHANGED_FILE_LIST}" | egrep "*.tf|*.tfvars" | grep '/' | sort -u | sed 's:[^/]*$::' | sort -u | uniq -u > "${WORK_DIR}/${TF_DIRECTORY_LIST}"
+
+if [[ "${DEBUG}" == "1" ]]; then
+  echo "${FUNCNAME[0]}() :: DEBUG :: Terraform directories with changed files: cat ${WORK_DIR}/${TF_DIRECTORY_LIST}"
+fi
+
+echo "${FUNCNAME[0]}() :: Working with directories ${DIRECTORY_LIST[@]}"
+
+if [[ -s "${WORK_DIR}/${TF_DIRECTORY_LIST}" ]]; then
+        # The file is not-empty.
+        echo "${FUNCNAME[0]}() :: Working with the following TF directories"
+        cat "${WORK_DIR}/${TF_DIRECTORY_LIST}"
+else
+        # The file is empty.
+      echo "${FUNCNAME[0]}() :: No Terraform files were modified"
+      echo "${FUNCNAME[0]}() :: ${WORK_DIR}/${TF_DIRECTORY_LIST} is empty, nothing to do. exiting..."
+      exit 0
+fi
+
+
+
 sleep 900
 
 }
