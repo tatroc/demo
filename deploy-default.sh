@@ -58,49 +58,20 @@ if [[ ! "${WORK_DIR}" || ! -d "${WORK_DIR}" ]]; then
   exit 1
 fi
 
-
-BRANCH=$(git rev-parse --abbrev-ref HEAD)
-
-if [[ "${DEBUG}" == "1" ]]; then
-  echo "${FUNCNAME[0]}() :: DEBUG :: Getting hashes"
-  git log --oneline --pretty=format:%H master..$BRANCH
-  
-  echo "${FUNCNAME[0]}() :: DEBUG :: Getting log"
-  git log --oneline master..$BRANCH
-
-  echo "${FUNCNAME[0]}() :: DEBUG :: Get master HEAD"
-  cat ./.git/refs/heads/master
-  echo "${FUNCNAME[0]}() :: DEBUG :: Get current HEAD"
-  git branch
-  cat ./.git/HEAD
-fi
-
-echo "${FUNCNAME[0]}() :: On branch $BRANCH"
-echo "${FUNCNAME[0]}() :: Getting all commit hash differences between master and $BRANCH"
-git log --oneline --pretty=format:%H master..$BRANCH > "${WORK_DIR}/${COMMIT_HASHES_FILE}"
-
-mapfile -t ARRAY_COMMIT_HASHES < "${WORK_DIR}/${COMMIT_HASHES_FILE}"
-
-# Get commit hashes and commit messages
-USE_COMMIT_MESSAGE_FOR_REALSES=false
-if [[ "${USE_COMMIT_MESSAGE_FOR_REALSES}" ]]; then
-  git log --oneline --pretty=format:"%H,%B" > "${WORK_DIR}/${COMMIT_MESSAGES_FILE}"
-fi
-
-#git log --pretty="%D %H" --decorate=short --decorate-refs=refs/tags > "${WORK_DIR}/${ALL_COMMIT_HASH_FILE}"
+git log --pretty="%D %H" --decorate=short --decorate-refs=refs/tags > "${WORK_DIR}/${ALL_COMMIT_HASH_FILE}"
 ls -la "${WORK_DIR}/"
 
 
-# exec 4<"${WORK_DIR}/${ALL_COMMIT_HASH_FILE}"
-# while read -u4 line ; do
-#     if [[ "$line" != *"tag"* ]]; then
-#         echo "Unable to locate Git tag for commit: $line"
-#         echo $line >> "${WORK_DIR}/${HASH_FILE}"
-#     else
-#         echo "Latest tag found in commit: $line"
-#         break
-#     fi
-# done
+exec 4<"${WORK_DIR}/${ALL_COMMIT_HASH_FILE}"
+while read -u4 line ; do
+    if [[ "$line" != *"tag"* ]]; then
+        echo "Unable to locate Git tag for commit: $line"
+        echo $line >> "${WORK_DIR}/${HASH_FILE}"
+    else
+        echo "Latest tag found in commit: $line"
+        break
+    fi
+done
 
 cat "${WORK_DIR}/${HASH_FILE}"
 
