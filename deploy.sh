@@ -102,41 +102,49 @@ ls -la "${WORK_DIR}/"
 #     fi
 # done
 
-cat "${WORK_DIR}/${HASH_FILE}"
+if [[ -f  "${WORK_DIR}/${COMMIT_HASHES_FILE}" ]]; then
+  # The file is not-empty.
+  if [[ "${DEBUG}" == "1" ]]; then
+    echo "${FUNCNAME[0]}() :: content of of ${WORK_DIR}/${COMMIT_HASHES_FILE}"
+    echo "${FUNCNAME[0]}() :: cat ${WORK_DIR}/${COMMIT_HASHES_FILE}"
+    cat "${WORK_DIR}/${COMMIT_HASHES_FILE}"
+  fi
 
-exec 4<"${WORK_DIR}/${HASH_FILE}"
-while read -u4 line ; do
-    echo "$line"
-
-    git show --pretty="format:" --name-only $line >> "${WORK_DIR}/${COMMITTED_UNTAGGED_FILES}"
-done
-
-cat "${WORK_DIR}/${COMMITTED_UNTAGGED_FILES}"
-
-DIRECTORY_LIST=($(cat ${WORK_DIR}/${COMMITTED_UNTAGGED_FILES} | egrep -v "*.xml|^\." | grep '/' | awk -F '/' '{ print $1 }' | sort -u))
-declare -p DIRECTORY_LIST
-
-
-echo "Working with directories ${DIRECTORY_LIST[@]}"
+  for line in "${ARRAY_COMMIT_HASHES[@]}"
+  do
+    : 
+    if [[ "${DEBUG}" == "1" ]]; then
+      echo "${FUNCNAME[0]}() :: git show --pretty=\"format:\" --name-only $line"
+    fi
+      
+    git show --pretty="format:" --name-only $line >> "${WORK_DIR}/${CHANGED_FILE_LIST}"
+    # do whatever on "$i" here
+  done
+  echo "${FUNCNAME[0]}() :: Changed files: cat ${WORK_DIR}/${CHANGED_FILE_LIST}"
 
 
-if [ -z "$DIRECTORY_LIST" ]
-then
-    echo "No TF modules were modified"
-    echo "\$DIRECTORY_LIST is empty, nothing to do. Exiting..."
-    exit 0
+
+  # exec 4<"${WORK_DIR}/${COMMIT_HASHES_FILE}"
+  # while read -u4 line ; do
+
+  #     if [[ "${DEBUG}" == "1" ]]; then
+  #       #echo "${FUNCNAME[0]}() :: $line"
+  #       echo "git show --pretty=\"format:\" --name-only $line"
+  #     fi
+      
+  #     git show --pretty="format:" --name-only $line >> "${WORK_DIR}/${CHANGED_FILE_LIST}"
+
+  # done
 else
-    echo "\$DIRECTORY_LIST is NOT empty"
+  # The file is empty.
+  echo "${FUNCNAME[0]}() :: No Terraform files were modified"
+  echo "${FUNCNAME[0]}() :: ${WORK_DIR}/${CHANGED_FILE_LIST} is empty, nothing to do. exiting..."
+  exit 0
 fi
 
-echo "Working with directories ${DIRECTORY_LIST[@]}"
-
-for dir in "${DIRECTORY_LIST[@]}"
-do
-    echo "Directory: ${dir}"
-done
-
 echo $WORK_DIR
+sleep 900
+
 }
 
 getmoduledirectories $HASH_FILE $ALL_COMMIT_HASH_FILE $COMMITTED_UNTAGGED_FILES
