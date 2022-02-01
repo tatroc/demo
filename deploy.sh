@@ -221,8 +221,8 @@ mapfile -t TF_DIRS < "${WORK_DIR}/${TF_DIRECTORY_LIST}"
 BASE_DIR=$(pwd)
 echo "Base directory ${BASE_DIR}"
 
-echo "Sleeping for 900 seconds"
-sleep 900
+#echo "Sleeping for 900 seconds"
+#sleep 900
 
 # Package and Push TF modules to repository
 for wrkdir in "${TF_DIRS[@]}"
