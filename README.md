@@ -62,3 +62,19 @@ Terraform Package Demo Jenkins Demo [Terraform Package Demo Jenkins Demo](https:
 8. Terraform release will be published to Github
 
 
+
+
+You may see an error like below.
+```
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-release-plugin:3.0.0-M4:prepare (default-cli) on project cosmosdb_private: You don't have a SNAPSHOT project in the reactor projects list. -> [Help 1]
+```
+Fix error by added '-SNAPSHOT' to version.
+For example, 1.0.331-SNAPSHOT
+```
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.kna</groupId>
+    <artifactId>cosmosdb_private</artifactId>
+    <version>1.0.331-SNAPSHOT</version>
+```
+
+
