@@ -242,6 +242,25 @@ do
 
 done
 
+
+
+if [[ "$?" == "0" ]]; then
+
+  echo "Deployment was successful, merging changes in branch $BRANCH to master"
+  git branch
+  git checkout master
+  git merge $BRANCH
+
+  if [[ "$?" == "1" ]]; then
+    echo "Merging $BRANCH into master failed!!!, exiting..."
+    git diff
+    exit 1
+  fi
+
+  git push
+
+fi
+
 #version=$(git describe --tags `git rev-list --tags --max-count=1`)
 
 #NEW_VERSION=$(echo $version | awk -F. -v OFS=. 'NF==1{print ++$NF}; NF>1{if(length($NF+1)>length($NF))$(NF-1)++; $NF=sprintf("%0*d", length($NF), ($NF+1)%(10^length($NF))); print}')
