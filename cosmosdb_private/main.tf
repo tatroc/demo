@@ -1,6 +1,6 @@
 # My comment 27
 locals {
-  tags            = merge(var.tags, {"PROVISIONED_BY" = "KNA CloudOps Terraform 2", "CONTACT" = "devops@domain.com", "OWNER" = "christopher.tatro@kaplan.edu", "VERSION" = "v104"})
+  tags            = merge(var.tags, {"PROVISIONED_BY" = "KNA CloudOps Terraform 2", "CONTACT" = "devops@domain.com", "OWNER" = "christopher.tatro@kaplan.edu", "VERSION" = "v105"})
   subnet_id       = var.subnet_id
   subscription_id = "8701016c-7d8e-4940-993c-fda1a8417f46"
   ip_range_filter = var.ip_range_filter == null ? "104.42.195.92,40.76.54.131,52.176.6.30,52.169.50.45,52.187.184.26,0.0.0.0" : trimspace(join(",", ["104.42.195.92,40.76.54.131,52.176.6.30,52.169.50.45,52.187.184.26,0.0.0.0", var.ip_range_filter]))
