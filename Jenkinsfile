@@ -40,7 +40,7 @@ node('jenkinsAgentV2') {
 
         dir("${SCM_REPO}") {
             checkout([$class: 'GitSCM', 
-                branches: [[name: "*/${GIT_BRANCH}"]], 
+                branches: [[name: "*/${env.BRANCH_NAME}"]], 
                 extensions: [[$class: 'LocalBranch', localBranch: "**"]],
                 submoduleCfg: [],
                 userRemoteConfigs: [[credentialsId: "${GIT_CRED_ID}", url: "${SCM_URL}"]]])
