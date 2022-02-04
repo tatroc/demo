@@ -68,6 +68,8 @@ fi
 
 
 BRANCH=$(git rev-parse --abbrev-ref HEAD)
+echo "${FUNCNAME[0]}() :: DEBUG :: Current branch is ${BRANCH}"
+
 
 if [[ "${DEBUG}" == "1" ]]; then
   echo "${FUNCNAME[0]}() :: DEBUG :: Getting hashes"
