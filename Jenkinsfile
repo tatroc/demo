@@ -29,11 +29,13 @@ node('jenkinsAgentV2') {
     stage('Initialize')
     {
         sh """
-                    #!/bin/bash
-                    set -a
-                    . ./${envr}.env.sh
-                    ./prepare.sh
-                    """
+            #!/bin/bash
+            env
+            set -a
+            . ./${envr}.env.sh
+            env
+            ./prepare.sh
+        """
     }
 
     stage ('Checkout') {
