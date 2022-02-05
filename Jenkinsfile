@@ -79,6 +79,15 @@ environment {
                     git branch
                     pwd
                     '''
+
+                    withCredentials([usernamePassword(credentialsId: "${GIT_CRED_ID}", usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
+                        sh 'git config credential.helper "/bin/bash ./credential-helper.sh"'
+                        sh 'git fetch --all'
+                        sh 'git branch -a'
+                        sh 'git checkout master'
+                        sh 'git log --oneline --pretty=format:%H'
+                        sh "git checkout ${env.BRANCH_NAME}"
+                    }
                 }
             }
         }
