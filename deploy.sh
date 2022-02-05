@@ -167,17 +167,21 @@ if [[ "${DEBUG}" == "1" ]]; then
   echo "${FUNCNAME[0]}() :: DEBUG :: Terraform directories with changed files: cat ${WORK_DIR}/${TF_DIRECTORY_LIST}"
 fi
 
+echo "#################################################################"
 echo "${FUNCNAME[0]}() :: Working with directories ${DIRECTORY_LIST[@]}"
+echo "#################################################################"
 
 if [[ -s "${WORK_DIR}/${TF_DIRECTORY_LIST}" ]]; then
-        # The file is not-empty.
-        echo "${FUNCNAME[0]}() :: Working with the following TF directories"
-        cat "${WORK_DIR}/${TF_DIRECTORY_LIST}"
+  # The file is not-empty.
+  echo "#############################################################"
+  echo "${FUNCNAME[0]}() :: Working with the following TF directories"
+  cat "${WORK_DIR}/${TF_DIRECTORY_LIST}"
+  echo "#############################################################"
 else
-        # The file is empty.
-      echo "${FUNCNAME[0]}() :: No Terraform files were modified"
-      echo "${FUNCNAME[0]}() :: ${WORK_DIR}/${TF_DIRECTORY_LIST} is empty, nothing to do. exiting..."
-      exit 0
+    # The file is empty.
+  echo "${FUNCNAME[0]}() :: No Terraform files were modified"
+  echo "${FUNCNAME[0]}() :: ${WORK_DIR}/${TF_DIRECTORY_LIST} is empty, nothing to do. exiting..."
+  exit 0
 fi
 
 
