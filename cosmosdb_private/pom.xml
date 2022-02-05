@@ -3,12 +3,12 @@
     <groupId>org.kna</groupId>
     <artifactId>cosmosdb_private</artifactId>
 
-    <version>1.0.489</version>
+    <version>1.0.490-SNAPSHOT</version>
 
     <scm>
         <connection>scm:git:${env.SCM_URL}</connection>
         <developerConnection>scm:git:${env.SCM_URL}</developerConnection>
-        <tag>cosmosdb_private-1.0.489</tag>
+        <tag>cosmosdb_private-1.0.350</tag>
     </scm>
     <!-- 10 -->
     <distributionManagement>
