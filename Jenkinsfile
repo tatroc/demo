@@ -23,8 +23,7 @@ def MVN_URL="https://maven.pkg.github.com/tatroc/demo"
 
 
 pipeline {
-    agent { label 'jenkinsAgentV2' 
-    }
+    agent { label 'jenkinsAgentV2' }
   //triggers{pollSCM('*/1 * * * *')}
 
 
@@ -56,7 +55,7 @@ environment {
     // }
 
 
-  agent { label 'cloudops-dev' }
+  //agent { label 'cloudops-dev' }
   stages {
 
 
