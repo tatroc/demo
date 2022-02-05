@@ -30,20 +30,20 @@
 
     <server>
       <id>kss-github.kaplan.com</id>
-      <username>${env.GITHUB_USERNAME}</username>
-      <password>${env.GITHUB_PASSWORD}</password>
+      <username>${env.GIT_USERNAME}</username>
+      <password>${env.GIT_PASSWORD}</password>
     </server>
     
     <server>
       <id>github.com</id>
-      <username>${env.GITHUB_USERNAME}</username>
-      <password>${env.GITHUB_PASSWORD}</password>
+      <username>${env.GIT_USERNAME}</username>
+      <password>${env.GIT_PASSWORD}</password>
     </server>
 
     <server>
       <id>github</id>
-      <username>${env.GITHUB_USERNAME}</username>
-      <passphrase>${env.GITHUB_PASSWORD}</passphrase>
+      <username>${env.GIT_USERNAME}</username>
+      <passphrase>${env.GIT_PASSWORD}</passphrase>
     </server>
 
   </servers>

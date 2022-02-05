@@ -37,9 +37,9 @@ pipeline {
 
 
 environment {
-        GITHUB_CREDS = credentials("${GIT_CRED_ID}")
-        GITHUB_USERNAME = "$GITHUB_CREDS_USR"
-        GITHUB_PASSWORD = "$GITHUB_CREDS_PSW"
+        GIT_CRED = credentials("${GIT_CRED_ID}")
+        GIT_USERNAME = "$GIT_CRED_USR"
+        GIT_PASSWORD = "$GIT_CRED_PSW"
         DEBIAN_FRONTEND = "noninteractive"
         GIT_AUTHOR_NAME = "jenkins"
         GIT_AUTHOR_EMAIL = "tss-devops@kaplan.com"
@@ -132,7 +132,7 @@ environment {
                         env
 
                         pwd
-                        #./deploy.sh
+                        ./deploy.sh
                         """
                     }
                 }
