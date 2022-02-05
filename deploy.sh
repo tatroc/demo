@@ -11,6 +11,8 @@ CHANGED_FILE_LIST=changed_files.txt
 TF_DIRECTORY_LIST=tf_directories.txt
 COMMIT_MESSAGES_FILE=commit_messages.txt
 
+ENABLE_MERGE=0
+
 git config --global http.sslVerify false
 
 
@@ -249,24 +251,26 @@ do
 done
 
 
+if [[ "${ENABLE_MERGE}" == "1" ]]; then
 
-if [[ "$?" == "0" ]]; then
+  if [[ "$?" == "0" ]]; then
 
-  echo "Deployment was successful, merging changes in branch $BRANCH to master"
-  git branch
-  git checkout master
-  git merge $BRANCH
+    echo "Deployment was successful, merging changes in branch $BRANCH to master"
+    git branch
+    git checkout master
+    git merge $BRANCH
 
-  if [[ "$?" == "1" ]]; then
-    echo "Merging $BRANCH into master failed!!!, exiting..."
-    git diff
-    exit 1
+    if [[ "$?" == "1" ]]; then
+      echo "Merging $BRANCH into master failed!!!, exiting..."
+      git diff
+      exit 1
+    fi
+
+    git push
+
   fi
 
-  git push
-
 fi
-
 #version=$(git describe --tags `git rev-list --tags --max-count=1`)
 
 #NEW_VERSION=$(echo $version | awk -F. -v OFS=. 'NF==1{print ++$NF}; NF>1{if(length($NF+1)>length($NF))$(NF-1)++; $NF=sprintf("%0*d", length($NF), ($NF+1)%(10^length($NF))); print}')
