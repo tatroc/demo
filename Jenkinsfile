@@ -49,11 +49,11 @@ environment {
         SCM_URL = "$SCM_URL"
     }
 
-    script {
-        if ('1' == '1') {
-            echo "something"
-        } 
-    }
+    // script {
+    //     if ('1' == '1') {
+    //         echo "something"
+    //     } 
+    // }
 
 
   agent { label 'cloudops-dev' }
