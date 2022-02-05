@@ -2,11 +2,11 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.kna</groupId>
     <artifactId>cosmosdb_private</artifactId>
-    <version>1.0.351-SNAPSHOT</version>
+    <version>1.0.351</version>
     <scm>
         <connection>scm:git:${env.SCM_URL}</connection>
         <developerConnection>scm:git:${env.SCM_URL}</developerConnection>
-        <tag>cosmosdb_private-1.0.331</tag>
+        <tag>cosmosdb_private-1.0.351</tag>
     </scm>
     <!-- 10 -->
     <distributionManagement>
