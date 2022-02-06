@@ -265,7 +265,7 @@ if [[ "${ENABLE_MERGE}" == "1" ]]; then
       git diff
       exit 1
     fi
-
+    git pull --no-edit
     git push
 
   fi
