@@ -2,7 +2,7 @@
 
 locals {
 
-  tags            = merge(var.tags, {"PROVISIONED_BY" = "KNA CloudOps Terraform 2", "CONTACT" = "devops@domain.com", "OWNER" = "christopher.tatro@kaplan.edu", "VERSION" = "v133"})
+  tags            = merge(var.tags, {"PROVISIONED_BY" = "KNA CloudOps Terraform 2", "CONTACT" = "devops@domain.com", "OWNER" = "christopher.tatro@kaplan.edu", "VERSION" = "v134"})
 
 }
 
