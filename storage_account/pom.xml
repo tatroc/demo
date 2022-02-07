@@ -2,11 +2,11 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.kna</groupId>
     <artifactId>storage_account</artifactId>
-    <version>1.0.296-SNAPSHOT</version>
+    <version>1.0.296</version>
     <scm>
         <connection>scm:git:${env.SCM_URL}</connection>
         <developerConnection>scm:git:${env.SCM_URL}</developerConnection>
-        <tag>HEAD</tag>
+        <tag>storage_account-1.0.296</tag>
     </scm>
     <!-- 10 -->
     <distributionManagement>
