@@ -4,14 +4,18 @@ DEBUG=0
 
 export DEBIAN_FRONTEND="noninteractive"
 
-GH_SOURCE_FILE=/etc/apt/sources.list.d/github-cli.list
-
-if [[ -f "$GH_SOURCE_FILE" ]]; then
-    echo "$GH_SOURCE_FILE exists."
-else
+which gh || gh_cli_error=true
+#GH_SOURCE_FILE=/etc/apt/sources.list.d/github-cli.list
+if [[ $gh_cli_error ]]; then 
     echo "Configure apt github repo"
     curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | dd of=/etc/apt/trusted.gpg.d/githubcli-archive-keyring.gpg
     echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/trusted.gpg.d/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | tee /etc/apt/sources.list.d/github-cli.list > /dev/null
+    apt update
+    echo "Installing github cli"
+    apt install -y gh
+else
+    echo "gh cli was previously installed"
+    which gh
 fi
 
 
