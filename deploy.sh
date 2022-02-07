@@ -259,6 +259,7 @@ if [[ "$?" == "0" ]]; then
     exit 1
   fi
 
+  git pull --no-edit
   git push
 
 fi
