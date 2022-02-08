@@ -23,7 +23,7 @@ def MVN_URL="https://maven.pkg.github.com/tatroc/demo"
 
 
 pipeline {
-    agent { label 'jenkinsAgentV2' }
+    agent { label 'jenkinsAgentV2 && linuxagent' }
   //triggers{pollSCM('*/1 * * * *')}
 
 
