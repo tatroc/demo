@@ -244,23 +244,27 @@ do
 
 done
 
+RELEASE_ACTION=false
 
+if [[ "${RELEASE_ACTION}" == 'true' && "$?" == "0" ]]; then
 
-if [[ "$?" == "0" ]]; then
+  if [[ "$?" == "0" ]]; then
 
-  echo "Deployment was successful, merging changes in branch $BRANCH to master"
-  git branch
-  git checkout master
-  git merge $BRANCH
+    echo "Deployment was successful, merging changes in branch $BRANCH to master"
+    git branch
+    git checkout master
+    git merge $BRANCH
 
-  if [[ "$?" == "1" ]]; then
-    echo "Merging $BRANCH into master failed!!!, exiting..."
-    git diff
-    exit 1
+    if [[ "$?" == "1" ]]; then
+      echo "Merging $BRANCH into master failed!!!, exiting..."
+      git diff
+      exit 1
+    fi
+
+    git pull --no-edit
+    git push
+
   fi
-
-  git pull --no-edit
-  git push
 
 fi
 
