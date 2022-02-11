@@ -229,7 +229,13 @@ echo "Base directory ${BASE_DIR}"
 # Package and Push TF modules to repository
 for wrkdir in "${TF_DIRS[@]}"
 do
-    echo "Working on directory: ./${wrkdir}"
+    CLOUD=$(echo ${wrkdir} | awk -F '/' '{ print $1 }')
+    ARTIFACT_ID=$(echo ${wrkdir} | awk -F '/' '{ print $2 }')
+    ARTIFACT_ID_FULL="${CLOUD}-${ARTIFACT_ID}"
+    echo "CLOUD: ${CLOUD}"
+    echo "ARTIFACT_ID: ${ARTIFACT_ID}"
+    echo "ARTIFACT_ID_FULL: ${ARTIFACT_ID_FULL}"
+    echo "Working on directory: ${wrkdir}"
     cd $wrkdir
 
     mvn --batch-mode build-helper:released-version release:clean release:prepare release:perform install github-release:github-release -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true -Dmaven.wagon.http.ssl.ignore.validity.dates=true

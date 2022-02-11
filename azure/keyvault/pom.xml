@@ -154,7 +154,7 @@
                 <version>2.3</version>
                 <configuration>
                     <descriptors>
-                        <descriptor>../assembly.xml</descriptor>
+                        <descriptor>../../assembly.xml</descriptor>
                     </descriptors>
                 </configuration>
                 <executions>
