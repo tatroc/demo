@@ -113,7 +113,7 @@ environment {
                 dir("${SCM_REPO}") {
                     sh '''
                     #!/bin/bash
-                    ./prepare.sh
+                    sudo ./prepare.sh
                     '''
                 }
             }
