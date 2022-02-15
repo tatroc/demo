@@ -238,7 +238,7 @@ do
     echo "Working on directory: ${wrkdir}"
     cd $wrkdir
 
-    mvn --batch-mode build-helper:released-version release:clean release:prepare release:perform install github-release:github-release -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true -Dmaven.wagon.http.ssl.ignore.validity.dates=true
+    mvn -e --batch-mode build-helper:released-version release:clean release:prepare release:perform install github-release:github-release -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true -Dmaven.wagon.http.ssl.ignore.validity.dates=true
     if [ $? -eq 0 ]; then
         echo OK
     else
