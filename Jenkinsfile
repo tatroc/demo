@@ -18,7 +18,7 @@ def GIT_REPO="demo"
 def SCM_URL="https://github.com/tatroc/${GIT_REPO}.git"
 def GIT_CRED_ID="tatroc_gh"
 //def GIT_BRANCH="dev"
-def MVN_URL="https://maven.pkg.github.com/tatroc/demo"
+def MVN_URL="https://maven.pkg.github.com/tatroc/${GIT_REPO}"
 
 
 
