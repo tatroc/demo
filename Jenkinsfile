@@ -128,7 +128,7 @@ environment {
                 // script {
                 //     load "./${envr}.env.sh"
                 // }
-                withCredentials([usernamePassword(credentialsId: "${GIT_CRED_ID}", usernameVariable: 'GITHUB_USERNAME', passwordVariable: 'GITHUB_PASSWORD')]) {
+                withCredentials([usernamePassword(credentialsId: "${GIT_CRED_ID}", usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
                 // environment {
                 //     GITHUB_CREDS = credentials("${GIT_CRED_ID}")
                 //     GITHUB_USERNAME = "$GITHUB_CREDS_USR"
@@ -139,7 +139,7 @@ environment {
                     dir("${SCM_REPO}") {
                         sh """
                         #!/bin/bash
-                        echo ${envr}
+                        #echo ${envr}
                         #. ./${envr}.env.sh
                         env
 

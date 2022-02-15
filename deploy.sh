@@ -30,18 +30,18 @@ else
     echo "environment variable \$MVN_URL set to ${MVN_URL}"
 fi
 
-if [[ -z "${GITHUB_USERNAME}" ]]; then
-  echo "environment variable \$GITHUB_USERNAME not set"
+if [[ -z "${GIT_USERNAME}" ]]; then
+  echo "environment variable \$GIT_USERNAME not set"
   exit 1
 else
-    echo "environment variable \$GITHUB_USERNAME set to ${GITHUB_USERNAME}"
+    echo "environment variable \$GIT_USERNAME set to ${GIT_USERNAME}"
 fi
 
-if [[ -z "${GITHUB_PASSWORD}" ]]; then
-  echo "environment variable \$GITHUB_PASSWORD not set"
+if [[ -z "${GIT_PASSWORD}" ]]; then
+  echo "environment variable \$GIT_PASSWORD not set"
   exit 1
 else 
-    echo "environment variable \$GITHUB_PASSWORD set to XXXXXXXXXX"
+    echo "environment variable \$GIT_PASSWORD set to XXXXXXXXXX"
 fi
 
 
