@@ -152,6 +152,12 @@ environment {
         }
 
 
+        stage ('Cleanup') {
+                steps {
+                    cleanWs disableDeferredWipeout: true, deleteDirs: true
+                }
+        }
+
   }
 }
 
