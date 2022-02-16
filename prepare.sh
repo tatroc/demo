@@ -25,9 +25,13 @@ git config --global user.name "${GIT_AUTHOR_NAME}"
 
 
 echo "Installing maven"
-apt update
-apt install -y maven
-
+if [[ "$AWS_EXECUTION_ENV" == "AWS_ECS_EC2" ]]; then
+    apt update
+    apt install -y maven
+else
+    sudo apt update
+    sudo apt install -y maven
+fi
 
 if [[ -z "$JAVA_HOME" ]]; then
       echo "\$JAVA_HOME is empty"
