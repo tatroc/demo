@@ -50,7 +50,23 @@ if [ $DEBUG == "1" ]; then
     git --version
 fi
 
+if [[ -z "$JAVA_HOME" ]]; then
+      echo "\$JAVA_HOME is empty"
+      export JAVA_HOME="/usr"
+      "Setting JAVA_HOME to ${JAVA_HOME}"
+else
+      echo "\$JAVA_HOME is NOT empty"
+      echo "\$JAVA_HOME value: $JAVA_HOME"
+fi
 
+if [[ -z "$M2_HOME" ]]; then
+      echo "\$M2_HOME is empty"
+      export M2_HOME="/usr/share/maven"
+      echo "Setting M2_HOME to ${M2_HOME}"
+else
+      echo "\$M2_HOME is NOT empty"
+      echo "\$M2_HOME value: $M2_HOME"
+fi
 
 
 
