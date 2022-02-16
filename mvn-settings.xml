@@ -38,6 +38,7 @@
       <id>github.com</id>
       <username>${env.GIT_USERNAME}</username>
       <password>${env.GIT_PASSWORD}</password>
+      <passphrase>${env.GIT_PASSWORD}</passphrase>
     </server>
 
     <server>
