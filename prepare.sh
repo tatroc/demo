@@ -33,9 +33,12 @@ else
     sudo apt install -y maven
 fi
 
+export JAVA_HOME_8=/usr/lib/jvm/java-1.8.0-openjdk-amd64
+
 if [[ -z "$JAVA_HOME" ]]; then
       echo "\$JAVA_HOME is empty"
-      export JAVA_HOME="/usr"
+      #export JAVA_HOME="/usr"
+      export JAVA_HOME="${JAVA_HOME_8}"
       "Setting JAVA_HOME to ${JAVA_HOME}"
 else
       echo "\$JAVA_HOME is NOT empty"
