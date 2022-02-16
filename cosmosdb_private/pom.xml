@@ -46,7 +46,7 @@
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
-                <artifactId>build-helper-maven-plugin</artifactId>
+                <artifactId></artifactId>
                 <version>3.2.0</version>
                 <executions>
                     <execution>
@@ -67,7 +67,7 @@
                         <configuration>
                             <owner>tatroc</owner>
                             <repository>demo</repository>
-                            <server>github</server>
+                            <server>github.com</server>
                             <!-- <tagName>${project.artifactId}-${project.version}</tagName> -->
                             <!-- <name>${project.artifactId}-${project.version}</name> -->
                             <tagName>${project.artifactId}-${releasedVersion.version}</tagName>
