@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DEBUG=0
+DEBUG=1
 
 export DEBIAN_FRONTEND="noninteractive"
 env
@@ -8,6 +8,7 @@ mkdir -p ~/.m2
 cp ./mvn-settings.xml ~/.m2/settings.xml
 #dpkg -s maven || EXIT_CODE=$?
 #if [ $EXIT_CODE -eq 1 ]; then
+# cat /etc/os-release | head -1 | awk -F '=' '{ print $2 }' | tr -d '" '
 
 GIT_VER_RELEASE=$(git --version | awk '{ print $3 }' | awk -F '.' '{ print $1 }')
 GIT_VER_MAJOR=$(git --version | awk '{ print $3 }' | awk -F '.' '{ print $1 }')
@@ -28,8 +29,25 @@ apt update
 apt install -y maven
 
 
-export JAVA_HOME=/usr
-export M2_HOME=/usr/share/maven
+if [[ -z "$JAVA_HOME" ]]; then
+      echo "\$JAVA_HOME is empty"
+      export JAVA_HOME=/usr
+      "Setting JAVA_HOME to ${JAVA_HOME}"
+else
+      echo "\$JAVA_HOME is NOT empty"
+      echo "\$JAVA_HOME value: $JAVA_HOME"
+fi
+
+if [[ -z "$M2_HOME" ]]; then
+      echo "\$M2_HOME is empty"
+      export M2_HOME=/usr/share/maven
+      echo "Setting M2_HOME to ${M2_HOME}"
+else
+      echo "\$M2_HOME is NOT empty"
+      echo "\$M2_HOME value: $M2_HOME"
+fi
+
+
 
 if [ $DEBUG == "1" ]; then
     cat /etc/os-release
