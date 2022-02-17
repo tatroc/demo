@@ -32,7 +32,7 @@ dependencies {
 plugins {
   //id "io.alcide.gradle-semantic-build-versioning" version "4.2.2"
   id 'nebula.release' //version '16.0.0'
-    id 'java'
+  id 'java'
  // id 'maven-publish'
 //id 'application'
 }
@@ -61,7 +61,7 @@ task buildZip(type: Zip) {
    from './'
    include '*.tf'
    //include '*/*' //to include contents of a folder present inside Reports directory
-   archiveName 'Reports.zip'
+   //archiveName 'Reports.zip'
    destinationDir(file('./target'))
 }
 
