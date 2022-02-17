@@ -65,7 +65,7 @@ task buildZip(type: Zip) {
 }
 
 tasks.register('hello') {
-    dependsOn task.zip
+    dependsOn task.buildZip
     doLast {
         println 'Hello world!'
     }
