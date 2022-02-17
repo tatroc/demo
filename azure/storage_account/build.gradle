@@ -64,7 +64,7 @@ task buildZip(type: Zip) {
    destinationDir(file('./target'))
 }
 
-task hello {
+tasks.register('hello') {
     dependsOn task.buildZip
     doLast {
         println 'Hello world!'
