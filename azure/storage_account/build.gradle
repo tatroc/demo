@@ -51,7 +51,7 @@ project.logger.info('my info message')
 // System.getProperty("user.dir")
 
 task cleanBuildPublish(type: GradleBuild) {
-     tasks = ['clean', 'build', 'final']
+     tasks = ['hello', 'buildZip']
 }
 
 
@@ -64,7 +64,7 @@ task buildZip(type: Zip) {
    destinationDir(file('./target'))
 }
 
-tasks.register('hello') {
+task hello {
     dependsOn task.buildZip
     doLast {
         println 'Hello world!'
