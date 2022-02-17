@@ -54,6 +54,7 @@ More detailed information here... """
 //     systemProperties['MYPROP'] = '/my/prop/value'
 // }
 // System.getProperty("user.dir")
+project.logger.info('my info message')
 
 task buildZip(type: Zip) {
    from './'
