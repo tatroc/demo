@@ -18,4 +18,4 @@ include 'services:webservice'
 
 rootProject.name = 'terraform-modules'
 include 'azure:storage_account'
-//include 'azure:cosmosdb_private'
+include 'azure:cosmosdb_private'
