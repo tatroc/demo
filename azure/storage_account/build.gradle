@@ -55,7 +55,7 @@ task cleanBuildPublish(type: GradleBuild) {
 }
 
 
- task run {
+ //task run {
 task buildZip(type: Zip) {
    from './'
    include '*.tf'
@@ -78,8 +78,8 @@ tasks.register('logInfo') {
     }
 }
 
- }
+// }
 
 //build.dependsOn logInfo
 //build.dependsOn buildZip
-build.dependsOn run
+build.dependsOn cleanBuildPublish
