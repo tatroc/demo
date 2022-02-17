@@ -50,6 +50,12 @@ project.logger.info('my info message')
 // }
 // System.getProperty("user.dir")
 
+task cleanBuildPublish(type: GradleBuild) {
+     tasks = ['clean', 'build', 'final']
+}
+
+
+ task run {
 task buildZip(type: Zip) {
    from './'
    include '*.tf'
@@ -65,4 +71,15 @@ tasks.register('hello') {
     }
 }
 
-build.dependsOn buildZip
+tasks.register('logInfo') {
+    logging.captureStandardOutput LogLevel.INFO
+    doFirst {
+        println 'A task message which is logged at INFO level'
+    }
+}
+
+ }
+
+//build.dependsOn logInfo
+//build.dependsOn buildZip
+build.dependsOn run
