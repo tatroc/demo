@@ -31,7 +31,7 @@ dependencies {
 */
 plugins {
   //id "io.alcide.gradle-semantic-build-versioning" version "4.2.2"
-  id 'nebula.release' version '16.0.0'
+  id 'nebula.release' //version '16.0.0'
  // id 'maven-publish'
 //id 'application'
 }
