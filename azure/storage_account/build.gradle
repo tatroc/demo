@@ -64,3 +64,5 @@ tasks.register('hello') {
         println 'Hello world!'
     }
 }
+
+build.dependsOn buildZip
