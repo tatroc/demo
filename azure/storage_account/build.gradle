@@ -53,7 +53,7 @@ task buildZip(type: Zip) {
    from './'
    include '*.tf'
    //include '*/*' //to include contents of a folder present inside Reports directory
-   archiveName 'Reports.zip'
+   //archiveName 'Reports.zip'
    destinationDir(file('./target'))
 }
 
