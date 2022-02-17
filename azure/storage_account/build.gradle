@@ -78,8 +78,10 @@ tasks.register('logInfo') {
     }
 }
 
-task building(dependsOn: ['buildZip']) << {
- print 'Hello from D'
+task building(dependsOn: ['buildZip']) {
+    doLast {
+        print 'Hello from D'
+    }
 }
 
 // }
