@@ -80,7 +80,7 @@ tasks.register('logInfo') {
 
 task building(dependsOn: ['logInfo','buildZip']) {
     doLast {
-        print 'Hello from D'
+        print 'Hello from building task'
     }
 }
 
