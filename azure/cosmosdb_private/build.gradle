@@ -36,6 +36,13 @@ plugins {
 //id 'application'
 }
 
+description ="""
+Example project for a Gradle build
+
+Project name: ${project.name}
+
+More detailed information here... """
+
 // repositories {
 //     mavenCentral()
 //     maven {
